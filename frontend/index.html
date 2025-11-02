@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,22 @@
         <title>Homepage</title>
     </head>
     <body>
-        <h1>BEM VINDO AO SCQT!!!</h1>
+        <header class="bg-slate-800 text-white p-4">
+            <nav class="container mx-auto flex justify-between">
+                <div class="font-bold text-xl hover:text-2xl">
+                    <a href="/">
+                        SCQT
+                    </a>
+                </div>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="hover:underline">Início</a></li> 
+                    <li><a href="/pages/questions" class="hover:underline">Questões</a></li>
+                    <li><a href="/pages/help" class="hover:underline">Ajuda</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="bg-slate-400 text-white min-h-screen">
+            <h1>BEM VINDO AO SCQT!!!</h1>
+        </main>
     </body>
 </html>
