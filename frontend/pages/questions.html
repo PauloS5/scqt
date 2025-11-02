@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <title>Questões</title>
     </head>
-    
+
     <body class="flex flex-col min-h-screen">
         <header class="bg-slate-800 text-white p-4 sticky top-0">
             <nav class="container mx-auto flex justify-between">
@@ -16,15 +17,159 @@
                     </a>
                 </div>
                 <ul class="flex space-x-4">
-                    <li><a href="/" class="hover:underline">Início</a></li> 
+                    <li><a href="/" class="hover:underline">Início</a></li>
                     <li><a href="/pages/questions" class="hover:underline">Questões</a></li>
                     <li><a href="/pages/help" class="hover:underline">Ajuda</a></li>
                 </ul>
             </nav>
         </header>
 
-        <main class="bg-slate-50 grow">
-            <h1>BEM VINDO AO SCQT!!!</h1>
+        <main class="bg-slate-50 grow flex justify-center items-center flex-col">
+            <section class="container bg-slate-600 rounded w-fit h-min my-8 p-2 flex flex-col gap-4">
+                <!-- TÍTULO -->
+                <div>
+                    <h2 class="text-white text-2xl font-bold">Questionário</h2>
+                    <hr class="mt-2">
+                </div>
+
+                <!-- QUANTIDADE DE QUESTÕES -->
+                <div>
+                    <div class="flex justify-between">
+                        <div>
+                            <label for="in-count" class="text-white">Qtde de Questões</label>
+                            <input type="number" id="in-count" class="rounded text-slate-800 px-1 w-20 bg-slate-50" min="1"
+                                value="1">
+                        </div>
+
+                        <button
+                            class="rounded bg-slate-50 text-slate-800 px-5 cursor-pointer hover:bg-slate-800 hover:text-white"
+                            type="submit">Gerar</button>
+                    </div>
+                    <hr class="mt-2">
+                </div>
+
+                <!-- QUESTÕES -->
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-1">Questões</h3>
+                    <div class="flex flex-col gap-1">
+                        <div class="text-white">
+                            <span class="font-semibold">QUESTÃO 01</span>
+                            <select id="theme" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Assunto</option>
+                                <option value="">Assunto A</option>
+                                <option value="">Assunto B</option>
+                                <option value="">Assunto C</option>
+                                <option value="">Assunto D</option>
+                            </select>
+                            <select id="style" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Estilo</option>
+                                <option value="">Estilo A</option>
+                                <option value="">Estilo B</option>
+                                <option value="">Estilo C</option>
+                            </select>
+                        </div>
+                        <div class="text-white">
+                            <span class="font-semibold">QUESTÃO 02</span>
+                            <select id="theme" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Assunto</option>
+                                <option value="">Assunto A</option>
+                                <option value="">Assunto B</option>
+                                <option value="">Assunto C</option>
+                                <option value="">Assunto D</option>
+                            </select>
+                            <select id="style" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Estilo</option>
+                                <option value="">Estilo A</option>
+                                <option value="">Estilo B</option>
+                                <option value="">Estilo C</option>
+                            </select>
+                        </div>
+                        <div class="text-white">
+                            <span class="font-semibold">QUESTÃO 03</span>
+                            <select id="theme" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Assunto</option>
+                                <option value="">Assunto A</option>
+                                <option value="">Assunto B</option>
+                                <option value="">Assunto C</option>
+                                <option value="">Assunto D</option>
+                            </select>
+                            <select id="style" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Estilo</option>
+                                <option value="">Estilo A</option>
+                                <option value="">Estilo B</option>
+                                <option value="">Estilo C</option>
+                            </select>
+                        </div>
+                        <div class="text-white">
+                            <span class="font-semibold">QUESTÃO 04</span>
+                            <select id="theme" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Assunto</option>
+                                <option value="">Assunto A</option>
+                                <option value="">Assunto B</option>
+                                <option value="">Assunto C</option>
+                                <option value="">Assunto D</option>
+                            </select>
+                            <select id="style" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Estilo</option>
+                                <option value="">Estilo A</option>
+                                <option value="">Estilo B</option>
+                                <option value="">Estilo C</option>
+                            </select>
+                        </div>
+                        <div class="text-white">
+                            <span class="font-semibold">QUESTÃO 05</span>
+                            <select id="theme" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Assunto</option>
+                                <option value="">Assunto A</option>
+                                <option value="">Assunto B</option>
+                                <option value="">Assunto C</option>
+                                <option value="">Assunto D</option>
+                            </select>
+                            <select id="style" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Estilo</option>
+                                <option value="">Estilo A</option>
+                                <option value="">Estilo B</option>
+                                <option value="">Estilo C</option>
+                            </select>
+                        </div>
+                        <div class="text-white">
+                            <span class="font-semibold">QUESTÃO 06</span>
+                            <select id="theme" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Assunto</option>
+                                <option value="">Assunto A</option>
+                                <option value="">Assunto B</option>
+                                <option value="">Assunto C</option>
+                                <option value="">Assunto D</option>
+                            </select>
+                            <select id="style" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Estilo</option>
+                                <option value="">Estilo A</option>
+                                <option value="">Estilo B</option>
+                                <option value="">Estilo C</option>
+                            </select>
+                        </div>
+                        <div class="text-white">
+                            <span class="font-semibold">QUESTÃO 07</span>
+                            <select id="theme" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Assunto</option>
+                                <option value="">Assunto A</option>
+                                <option value="">Assunto B</option>
+                                <option value="">Assunto C</option>
+                                <option value="">Assunto D</option>
+                            </select>
+                            <select id="style" class="rounded text-slate-800 px-1 w-25 bg-slate-50">
+                                <option value="">Estilo</option>
+                                <option value="">Estilo A</option>
+                                <option value="">Estilo B</option>
+                                <option value="">Estilo C</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button
+                        class="rounded bg-slate-50 text-slate-800 px-5 mt-3 mx-auto w-full cursor-pointer hover:bg-slate-800 hover:text-white"
+                        type="submit">Gerar Questões</button>
+                </div>
+            </section>
         </main>
 
         <footer class="bg-slate-800 py-2">
@@ -33,4 +178,5 @@
             </p>
         </footer>
     </body>
+
 </html>
