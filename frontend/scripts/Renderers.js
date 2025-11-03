@@ -14,20 +14,16 @@ function renderOptions(count) {
                 class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer mt-2 p-1 rounded mx-2"
                 id="theme-${i}">
 
-                <option value="">Assunto</option>
-                <option value="A">Assunto A</option>
-                <option value="B">Assunto B</option>
-                <option value="C">Assunto C</option>
-                <option value="D">Assunto D</option>
+                <option value="theme1">Primeira Determinação</option>
+                <option value="theme2">Teorema de Pitágoras</option>
+                <option value="theme3">Relação Trigométrica</option>
             </select>
             <select
                 class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer mt-2 p-1 rounded mx-2"
                 id="style-${i}">
 
-                <option value="">Estilo</option>
-                <option value="A">Estilo A</option>
-                <option value="B">Estilo B</option>
-                <option value="C">Estilo C</option>
+                <option value="style1">Demonstrativa</option>
+                <option value="style2">Objetiva</option>
             </select>
         `;
 
