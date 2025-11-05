@@ -46,11 +46,10 @@ export function renderQuestions(questions, container_id) {
             <p>
                 ${q.context}
                 ${q.hasAlternatives ? `
-                    <br>
-                    <b>a)</b> ${q.answers[0]} <br>
-                    <b>b)</b> ${q.answers[1]} <br>
-                    <b>c)</b> ${q.answers[2]} <br>
-                    <b>d)</b> ${q.answers[3]} <br>
+                    <br> <b>a)</b> ${q.answers[0]}
+                    <br> <b>b)</b> ${q.answers[1]}
+                    <br> <b>c)</b> ${q.answers[2]}
+                    <br> <b>d)</b> ${q.answers[3]}
                 `:"<br><br><br><br><br>"}
             </p>
             <hr>
