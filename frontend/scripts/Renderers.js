@@ -34,6 +34,28 @@ function renderOptions(count) {
 }
 
 // Função para renderizar as questões
-function renderQuestions(questions) {
+export function renderQuestions(questions, container_id) {
+    const container = document.getElementById(container_id);
 
+    for (let i = 1; i <= questions.length; i++) {
+        let q = questions[i-1];
+
+        let newQuestion = document.createElement("div");
+        newQuestion.innerHTML = `
+            <h3 class="font-semibold">Questão ${q.number} - ${q.theme}</h3>
+            <p>
+                ${q.context}
+                ${q.hasAlternatives ? `
+                    <br>
+                    <b>a)</b> ${q.answers[0]} <br>
+                    <b>b)</b> ${q.answers[1]} <br>
+                    <b>c)</b> ${q.answers[2]} <br>
+                    <b>d)</b> ${q.answers[3]} <br>
+                `:"<br><br><br><br><br>"}
+            </p>
+            <hr>
+        `;
+
+        container.append(newQuestion);
+    }
 }
