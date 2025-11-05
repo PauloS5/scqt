@@ -7,7 +7,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="/scripts/Renderers.js" defer></script>
     <title>Questões</title>
 </head>
 
@@ -47,8 +46,7 @@
                 </div>
 
                 <button
-                    class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer font-semibold mt-2 py-1 px-4 rounded"
-                    onclick="renderOptions(document.getElementById('in-count').value)">
+                    class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer font-semibold mt-2 py-1 px-4 rounded">
                     Gerar
                 </button>
             </div>
@@ -104,7 +102,7 @@
     </footer>
 
     <script type="module">
-        import { renderQuestions } from '/scripts/Renderers.js';
+        import { renderQuestions, renderOptions } from '/scripts/Renderers.js';
 
         let questions = [
             {
@@ -218,11 +216,15 @@
         ];
 
 
+        document.getElementById("btn-renderOptions").addEventListener("click", function () {
+            renderOptions(document.getElementById('in-count').value);
+        });
+
         document.getElementById("btn-renderQuestions").addEventListener("click", function () {
             renderQuestions(questions, "questions-list");
 
             questionsList.showModal();
-        })
+        });
     </script>
 </body>
 
