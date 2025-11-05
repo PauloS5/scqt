@@ -1,5 +1,5 @@
-﻿// Renderers.js - função robusta para gerar as questões
-function renderOptions(count) {
+﻿// Função para gerar as opções de questão
+export function renderOptions(count) {
     const container = document.getElementById("questions-container");
 
     container.innerHTML = "";
