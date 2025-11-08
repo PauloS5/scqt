@@ -222,7 +222,7 @@ function generateRadToTanQ() {
     
     const coefficient = Math.floor(Math.random() * 9) + 1;
     const divider = dividers[Math.floor(Math.random() * dividers.length)];
-    const degrees = (coefficient * 180) / divider;
+    const degrees = (coefficient * pi) / divider;
 
     return {
         values: {
