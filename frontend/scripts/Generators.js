@@ -90,6 +90,19 @@
     {sin: 0.9998, cos: 0.0175, tan: 57.2900}
 ];
 
+const pythagoreanValues = [
+    {catA: 3,  catB: 4,  hip: 5},
+    {catA: 5,  catB: 12, hip: 13},
+    {catA: 7,  catB: 24, hip: 25},
+    {catA: 8,  catB: 15, hip: 17},
+    {catA: 9,  catB: 40, hip: 41},
+    {catA: 11, catB: 60, hip: 61},
+    {catA: 12, catB: 35, hip: 37},
+    {catA: 13, catB: 84, hip: 85},
+    {catA: 16, catB: 63, hip: 65},
+    {catA: 20, catB: 21, hip: 29}
+];
+
 // Função para gerar uma questão sobre Primeira Determinação
 function generateFirstDetQ() {
     const turnsCount = Math.floor(Math.random() * 10) + 1;
@@ -106,26 +119,13 @@ function generateFirstDetQ() {
 
 // Função para gerar uma questão sobre Teorema de Pitágoras
 function generatePythagoreanTheoremQ() {
-    const pythagoreanValue = [
-        {catA: 3,  catB: 4,  hip: 5},
-        {catA: 5,  catB: 12, hip: 13},
-        {catA: 7,  catB: 24, hip: 25},
-        {catA: 8,  catB: 15, hip: 17},
-        {catA: 9,  catB: 40, hip: 41},
-        {catA: 11, catB: 60, hip: 61},
-        {catA: 12, catB: 35, hip: 37},
-        {catA: 13, catB: 84, hip: 85},
-        {catA: 16, catB: 63, hip: 65},
-        {catA: 20, catB: 21, hip: 29}
-    ];
-
     let multiplier = Math.floor(Math.random() * 10) + 1;
 
     if (Math.floor(Math.random() * 2)) {
         multiplier =multiplier/10;
     }
 
-    let values = pythagoreanValue[Math.floor(Math.random() * 10)];
+    let values = pythagoreanValues[Math.floor(Math.random() * 10)];
 
     values.catA *= multiplier;
     values.catB *= multiplier;
@@ -167,36 +167,6 @@ function generatePythagoreanTheoremQ() {
 }
 
 // Função para gerar um questão sobre Relações Trigonométricas
-function generateTrigonometricRelationshipQ() {
-    let values = notableAngles[Math.floor(Math.random() * 89)];
-
-    switch (Math.floor(Math.random() * 3)) {
-        case 0:
-            return {
-                values: {
-                    sin: values.sin,
-                    cos: values.cos,
-                    tan: null
-                },
-                answer: values.tan
-            };
-        case 1:
-            return {
-                values: {
-                    sin: values.sin,
-                    cos: null,
-                    tan: values.tan
-                },
-                answer: values.cos
-            };
-        case 2:
-            return {
-                values: {
-                    sin: null,
-                    cos: values.cos,
-                    tan: values.tan
-                },
-                answer: values.sin
-            };
-    }
+function generateSinQ() {
+    
 }
