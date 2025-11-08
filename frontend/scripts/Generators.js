@@ -250,3 +250,16 @@ function generateDegToRadQ() {
         }
     }
 }
+
+// Função para gerar uma questão sobre a Relação Geral da Trigonometria
+function generatePythagoreanIdentityQ() {
+    const values = notableAngles[Math.floor(Math.random() * notableAngles.length)];
+    const aux = Math.floor(Math.random() * 2);
+    const ctx = aux ? values.sin : values.cos;
+    const answer = !aux ? values.sin : values.cos;
+
+    return {
+        value: ctx,
+        answer: answer
+    }
+}
