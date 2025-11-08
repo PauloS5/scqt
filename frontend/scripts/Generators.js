@@ -111,11 +111,8 @@ function generateFirstDetQ() {
     const firstDet = Math.floor(Math.random() * 360);
 
     return {
-        value: turnsCount + firstDet,
-        answers: {
-            turnsCount: turnsCount,
-            firstDet: firstDet
-        }
+        values: { totalDegrees: turnsCount + firstDet },
+        answers: { turnsCount: turnsCount, firstDet: firstDet }
     };
 }
 
@@ -124,7 +121,7 @@ function generatePythagoreanTheoremQ() {
     let multiplier = Math.floor(Math.random() * 10) + 1;
 
     if (Math.floor(Math.random() * 2)) {
-        multiplier =multiplier/10;
+        multiplier = multiplier/10;
     }
 
     let values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
@@ -137,81 +134,55 @@ function generatePythagoreanTheoremQ() {
     values.catB = Math.floor(values.catB * 10) / 10;
     values.hip  = Math.floor(values.hip  * 10) / 10;
 
-    switch (Math.floor(Math.random() * 3)) {
-        case 0:
-            return {
-                values: {
-                    catA: values.catA,
-                    catB: values.catB,
-                    hip: null
-                },
-                answer: values.hip
-            };
-        case 1:
-            return {
-                values: {
-                    catA: values.catA,
-                    catB: null,
-                    hip: values.hip
-                },
-                answer: values.catB
-            };
-        case 2:
-            return {
-                values: {
-                    catA: null,
-                    catB: values.catB,
-                    hip: values.hip
-                },
-                answer: values.catA
-            };
-    }
+    const index = (Math.floor(Math.random() * 3));
+
+    return [
+        { values: { catA: values.catA, catB: values.catB},
+        answer: { hip: values.hip } },
+        { values: { catA: values.catA, hip: values.hip },
+        answer: { catB: values.catB } },
+        { values: { catB: values.catB, hip: values.hip },
+        answer: { catA: values.catA } }
+    ][index];
 }
 
 // Função para gerar uma questão sobre Seno
 function generateSinQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
-    const catOpp = Math.floor(Math.random() * 2) ? values.catA : values.catB;
+    const catOpp = Number(Math.random() >= 0.5) ? values.catA : values.catB;
     const sin = catOpp / values.hip;
 
     return {
-        values: {
-            catOpp: catOpp,
-            hip: values.hip
-        },
-        answer: sin
+        values: { catOpp: catOpp, hip: values.hip },
+        answer: { sin: sin }
     };
 }
 
 // Função para gerar uma questão sobre Cosseno
 function generateCosQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
-    const catAdj = Math.floor(Math.random() * 2) ? values.catA : values.catB;
+    const catAdj = Number(Math.random() >= 0.5) ? values.catA : values.catB;
     const cos = catAdj / values.hip;
 
     return {
-        values: {
-            catAdj: catAdj,
-            hip: values.hip
-        },
-        answer: cos
+        values: { catAdj: catAdj, hip: values.hip },
+        answer: { cos: cos }
     };
 }
 
 // Função para gerar uma questão sobre Tangente
 function generateTanQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
-    const aux = Math.floor(Math.random() * 2);
+    
+    const aux = Number(Math.random() >= 0.5);
     const catOpp = aux ? values.catA : values.catB;
-    const catAdj = !aux ? values.catA : values.catB;
+    const catAdj = aux ? values.catB : values.catA;
+
     const tan = catOpp / catAdj;
 
     return {
-        values: {
-            catOpp: catOpp,
-            catAdj: catAdj
-        },
-        answer: tan
+        values: { catOpp: catOpp, catAdj: catAdj },
+        answer: { tan: tan }
     };
 }
 
@@ -225,11 +196,8 @@ function generateRadToDegQ() {
     const degrees = (coefficient * pi) / divider;
 
     return {
-        values: {
-            coefficient: coefficient,
-            divider: divider
-        },
-        answer: degrees
+        values: { coefficient: coefficient, divider: divider },
+        answer: { degrees: degrees }
     }
 }
 
@@ -243,23 +211,22 @@ function generateDegToRadQ() {
     const degrees = (coefficient * pi) / divider;
 
     return {
-        value: degrees,
-        answer: {
-            coefficient: coefficient,
-            divider: divider
-        }
+        values: { degrees: degrees },
+        answer: { coefficient: coefficient, divider: divider }
     }
 }
 
 // Função para gerar uma questão sobre a Relação Geral da Trigonometria
 function generatePythagoreanIdentityQ() {
-    const values = notableAngles[Math.floor(Math.random() * notableAngles.length)];
-    const aux = Math.floor(Math.random() * 2);
-    const ctx = aux ? values.sin : values.cos;
-    const answer = !aux ? values.sin : values.cos;
+    let values = notableAngles[Math.floor(Math.random() * notableAngles.length)];
 
-    return {
-        value: ctx,
-        answer: answer
-    }
+    const index = Number(Math.random() >= 0.5);
+
+    return [{
+        values: { sin: values.sin },
+        answer: { cos: values.cos }
+    }, {
+        values: { cos: values.cos },
+        answer: { sin: values.sin }
+    }][index];
 }
