@@ -166,7 +166,7 @@ function generatePythagoreanTheoremQ() {
     }
 }
 
-// Função para gerar um questão sobre Seno
+// Função para gerar uma questão sobre Seno
 function generateSinQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
     const catOpp = Math.floor(Math.random() * 2) ? values.catA : values.catB;
@@ -181,7 +181,7 @@ function generateSinQ() {
     };
 }
 
-// Função para gerar um questão sobre Cosseno
+// Função para gerar uma questão sobre Cosseno
 function generateCosQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
     const catAdj = Math.floor(Math.random() * 2) ? values.catA : values.catB;
@@ -196,7 +196,7 @@ function generateCosQ() {
     };
 }
 
-// Função para gerar um questão sobre Tangente
+// Função para gerar uma questão sobre Tangente
 function generateTanQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
     const aux = Math.floor(Math.random() * 2);
@@ -213,7 +213,7 @@ function generateTanQ() {
     };
 }
 
-// Função para gerar um questão sobre Conversão de Radianos para Graus
+// Função para gerar uma questão sobre Conversão de Radianos para Graus
 function generateRadToTanQ() {
     const pi = 180;
     const dividers = [1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 30, 36, 45, 60, 90, 180];
