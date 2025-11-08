@@ -195,3 +195,20 @@ function generateCosQ() {
         answer: cos
     };
 }
+
+// Função para gerar um questão sobre Tangente
+function generateTanQ() {
+    const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
+    const aux = Math.floor(Math.random() * 2);
+    const catOpp = aux ? values.catA : values.catB;
+    const catAdj = !aux ? values.catA : values.catB;
+    const tan = catOpp / catAdj;
+
+    return {
+        values: {
+            catOpp: catOpp,
+            catAdj: catAdj
+        },
+        answer: tan
+    };
+}
