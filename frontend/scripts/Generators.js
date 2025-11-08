@@ -125,7 +125,7 @@ function generatePythagoreanTheoremQ() {
         multiplier =multiplier/10;
     }
 
-    let values = pythagoreanValues[Math.floor(Math.random() * 10)];
+    let values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
 
     values.catA *= multiplier;
     values.catB *= multiplier;
@@ -166,7 +166,17 @@ function generatePythagoreanTheoremQ() {
     }
 }
 
-// Função para gerar um questão sobre Relações Trigonométricas
+// Função para gerar um questão sobre Seno
 function generateSinQ() {
-    
+    const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
+    const catOpp = Math.floor(Math.random() * 2) ? values.catA : values.catB;
+    const sin = catOpp / values.hip;
+
+    return {
+        values: {
+            catOpp: catOpp,
+            hip: values.hip
+        },
+        answer: sin
+    };
 }
