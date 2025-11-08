@@ -180,3 +180,18 @@ function generateSinQ() {
         answer: sin
     };
 }
+
+// Função para gerar um questão sobre Cosseno
+function generateCosQ() {
+    const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
+    const catAdj = Math.floor(Math.random() * 2) ? values.catA : values.catB;
+    const cos = catAdj / values.hip;
+
+    return {
+        values: {
+            catAdj: catAdj,
+            hip: values.hip
+        },
+        answer: cos
+    };
+}
