@@ -216,7 +216,7 @@ function generateTanQ() {
 }
 
 // Função para gerar uma questão sobre Conversão de Radianos para Graus
-function generateRadToTanQ() {
+function generateRadToDegQ() {
     const pi = 180;
     const dividers = [1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 30, 36, 45, 60, 90, 180];
     
