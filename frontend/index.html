@@ -1,81 +1,172 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br" data-theme="dark">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <title>Início</title>
-    </head>
 
-    <body class="flex flex-col min-h-screen">
-        <header class="bg-slate-800 text-white p-2 sticky top-0">
-            <nav class="container mx-auto flex justify-between items-center">
-                <div class="font-bold text-3xl hover:scale-110 duration-550 ease-in-out">
-                    <a href="/">
-                        SCQT
-                    </a>
-                </div>
-                <ul class="flex space-x-4">
-                    <li><a href="/" class="hover:underline">Início</a></li> 
-                    <li><a href="/pages/questions" class="hover:underline">Questões</a></li>
-                    <li><a href="/pages/help" class="hover:underline">Ajuda</a></li>
-                </ul>
-            </nav>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <title>SCQT</title>
+</head>
 
-        <main class="bg-slate-50 grow p-8">
+<body class="flex flex-col min-h-screen">
+    <header class="bg-slate-800 text-white p-2 sticky top-0">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="font-bold text-3xl hover:scale-110 duration-550 ease-in-out">
+                <a href="/">
+                    SCQT
+                </a>
+            </div>
+            <ul class="flex space-x-4">
+                <li><a href="/" class="hover:underline">Início</a></li>
+                <li><a href="/pages/questions" class="hover:underline">Questões</a></li>
+                <li><a href="/pages/help" class="hover:underline">Ajuda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="bg-slate-50 grow p-8">
+        <section class="flex flex-col items-center">
             <!-- O QUE É O SCQT? -->
-            <div class="w-4/5 bg-slate-600 text-white p-8 rounded-lg mx-auto mb-8 shadow-xl/20">
-                <h2 class="font-semibold text-2xl mb-8 text-shadow-lg">
-                    Bem-vindo ao SCQT!
-                </h2>
-                <p>
-                    SCQT Significa Sistema para Criação de Questões de Trigonometria, é um software desenvolvido para auxiliar professores na 
-                    criação e organização de questões sobre trigonometria, podendo ser utilizado para gerar questões de forma rápida e 
-                    eficiente. O sistema permite a crição de questões de múltipla escolha e dissertativas, podendo também escolher a parte 
-                    da trigonometria que deseja abordar, como relações trigonométricas, relações no triângulo retângulo, seno, cosseno, 
+            <h2 class="font-bold text-5xl mb-8 p-4 text-center text-gray-800">
+                Bem-vindo ao SCQT
+            </h2>
+            <div class="w-4/5 bg-white p-8 rounded-lg border border-indigo-200 mb-8 shadow-xl/20">
+                <p class="font-semibold text-gray-900 mb-4">
+                    SCQT Significa Sistema para Criação de Questões de Trigonometria, é um software desenvolvido para
+                    auxiliar professores na
+                    criação e organização de questões sobre trigonometria, podendo ser utilizado para gerar questões de
+                    forma rápida e
+                    eficiente. O sistema permite a crição de questões de múltipla escolha e dissertativas, podendo
+                    também
+                    escolher a parte
+                    da trigonometria que deseja abordar, como relações trigonométricas, relações no triângulo retângulo,
+                    seno, cosseno,
                     tangente, trigonometria na circunferência, etc.
                 </p>
-                <button onclick="location.href='/pages/questions'" class="mt-8 bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2 px-4 rounded cursor-pointer">
+            </div>
+
+            <div class="mt-6 mb-6 py-3">
+                <button type="submit"
+                    class="bg-gray-800 text-white cursor-pointer p-3 rounded-lg font-bold hover:shadow-xl hover:-translate-y-1 hover:bg-gray-600 transition-all duration-400"
+                    onclick="location='/pages/questions.html';">
                     Gerar Questões
                 </button>
             </div>
 
             <!-- O QUE É A TRIGONOMETRIA? -->
-            <div class="w-4/5 bg-slate-600 text-white p-8 rounded-lg mx-auto mb-8 shadow-xl/20">
-                <h2 class="font-semibold text-2xl mb-8 text-shadow-lg">
-                    O que é a Trigonometria?
-                </h2>
-                <p>
-                    A trigonometria é um ramo da matemática que estuda as relações entre os ângulos e os lados dos triângulos. Ela é 
-                    amplamente utilizada em diversas áreas, como física, engenharia, arquitetura e navegação. A trigonometria envolve 
-                    conceitos como funções trigonométricas (seno, cosseno, tangente), identidades trigonométricas e leis dos senos e 
-                    cossenos, que são fundamentais para resolver problemas relacionados a triângulos e fenômenos periódicos.
+            <h2 class="font-semibold text-gray-900 text-3xl mt-6 mb-8">
+                O que é a Trigonometria?
+            </h2>
+            <div class="w-4/5 bg-white p-8 rounded-lg border border-indigo-200 mb-8 shadow-xl/20">
+                <p class="font-semibold text-gray-900 mb-4 ">
+                    A trigonometria é um ramo da matemática que estuda as relações entre os ângulos e os lados dos
+                    triângulos. Ela é
+                    amplamente utilizada em diversas áreas, como física, engenharia, arquitetura e navegação. A
+                    trigonometria envolve
+                    conceitos como funções trigonométricas (seno, cosseno, tangente), identidades trigonométricas e leis
+                    dos
+                    senos e
+                    cossenos, que são fundamentais para resolver problemas relacionados a triângulos e fenômenos
+                    periódicos.
                 </p>
             </div>
+        </section>
 
-            <!-- CONCEITOS DA TRIGONOMETRIA -->
-            <div class="w-4/5 bg-slate-600 text-white p-8 rounded-lg mx-auto mb-8 shadow-xl/20">
-                <h2 class="font-semibold text-2xl mb-8 text-shadow-lg">
-                    Conceitos da Trigonometria
-                </h2>
-                <p>
-                    A trigonometria é baseada em alguns conceitos fundamentais, incluindo:
-                    <ul class="list-disc list-inside mt-4">
-                        <li>Relações métricas do triângulo retângulo</li>
-                        <li>Relações trigonométricas em um triângulo qualquer</li>
-                        <li>Teorema de pitágoras</li>
-                        <li>Seno, Cosseno e Tangente</li>
-                        <li>Trigonometria na circunferência</li>
-                    </ul>
-                </p>
+        <!-- CONCEITOS DA TRIGONOMETRIA -->
+        <h2 class="font-semibold text-2xl mb-8 mt-6 text-3xl text-gray-900 text-center">
+            Conceitos da Trigonometria
+        </h2>
+        <section class="grid grid-cols-3 gap-6 justify-items-center">
+
+            <div
+                class="card card-border bg-base-100 w-96 bg-white text-gray-900 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                <div class="card-body">
+                    <h2 class="card-title">1. Relações métricas em um triângulo retângulo</h2>
+                    <p class="font-semibold text-gray-800">
+                        São fórmulas que conectam as medidas dos lados, altura e projeções internas desse tipo de
+                        triângulo.
+                        Elas permitem calcular comprimentos com base em outros elementos conhecidos.
+                    </p>
+                </div>
             </div>
-        </main>
 
-        <footer class="bg-slate-800 py-2">
-            <p class="text-white text-center">
-                <span class="font-semibold">&copy; 2025 BDIPI.</span> Todos os direitos reservados.
-            </p>
-        </footer>
-    </body>
+            <div
+                class="card card-border bg-base-100 w-96 bg-white text-gray-900 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                <div class="card-body">
+                    <h2 class="card-title">1. Razões Trigonométricas em triângulo retângulo</h2>
+                    <p class="font-semibold text-gray-800">
+                        Envolvem as razões entre os lados do triângulo e seus ângulos agudos. As principais são seno,
+                        cosseno e tangente,
+                        usadas para calcular lados ou ângulos desconhecidos.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="card card-border bg-base-100 w-96 bg-white text-gray-900 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                <div class="card-body">
+                    <h2 class="card-title">3. Relações Trigonométricas em um triângulo qualquer</h2>
+                    <p class="font-semibold text-gray-800">
+                        Envolve a Lei dos Senos e a Lei dos Cossenos.
+                        Elas permitem calcular lados e ângulos mesmo quando o triângulo não é retângulo.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="card card-border bg-base-100 w-96 bg-white text-gray-900 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                <div class="card-body">
+                    <h2 class="card-title">4. Trigonometria na circunferência</h2>
+                    <p class="font-semibold text-gray-800">
+                        É o estudo das funções trigonométricas (seno, cosseno, tangente etc.) aplicadas a um círculo de
+                        raio 1,
+                        chamado de círculo trigonométrico.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="card card-border bg-base-100 w-96 bg-white text-gray-900 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                <div class="card-body">
+                    <h2 class="card-title">5. Funções Trigonométricas</h2>
+                    <p class="font-semibold text-gray-800">
+                        Relacionam ângulos com proporções entre lados de triângulos. As principais são seno, cosseno e
+                        tangente.
+                        Elas são usadas para resolver triângulos e modelar fenômenos periódicos.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="card card-border bg-base-100 w-96 bg-white text-gray-900 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                <div class="card-body">
+                    <h2 class="card-title">6. Aplicações Práticas da Trigonometria</h2>
+                    <p class="font-semibold text-gray-800">
+                        É usada na engenharia e arquitetura para calcular ângulos, alturas e distâncias em estruturas.
+                        É essencial na navegação, gráficos em softwares e jogos, etc.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="mt-10 mb-6 py-3 flex justify-center">
+            <button type="submit"
+                class="bg-gray-800 text-white cursor-pointer p-3 rounded-lg font-bold hover:shadow-xl hover:-translate-y-1 hover:bg-gray-600 transition-all duration-400"
+                onclick="location='/pages/questions.html';">
+                Gerar Questões
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-800 py-2">
+        <p class="text-white text-center">
+            <span class="font-semibold">&copy; 2025 BDIPI.</span> Todos os direitos reservados.
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</body>
+
 </html>
