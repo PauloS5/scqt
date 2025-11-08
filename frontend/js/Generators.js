@@ -106,7 +106,7 @@ const pythagoreanValues = [
 ];
 
 // Função para gerar uma questão sobre Primeira Determinação
-function generateFirstDetQ() {
+export function generateFirstDetQ() {
     const turnsCount = Math.floor(Math.random() * 10) + 1;
     const firstDet = Math.floor(Math.random() * 360);
 
@@ -117,7 +117,7 @@ function generateFirstDetQ() {
 }
 
 // Função para gerar uma questão sobre Teorema de Pitágoras
-function generatePythagoreanTheoremQ() {
+export function generatePythagoreanTheoremQ() {
     let multiplier = Math.floor(Math.random() * 10) + 1;
 
     if (Math.floor(Math.random() * 2)) {
@@ -147,7 +147,7 @@ function generatePythagoreanTheoremQ() {
 }
 
 // Função para gerar uma questão sobre Seno
-function generateSinQ() {
+export function generateSinQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
     const catOpp = Number(Math.random() >= 0.5) ? values.catA : values.catB;
     const sin = catOpp / values.hip;
@@ -159,7 +159,7 @@ function generateSinQ() {
 }
 
 // Função para gerar uma questão sobre Cosseno
-function generateCosQ() {
+export function generateCosQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
     const catAdj = Number(Math.random() >= 0.5) ? values.catA : values.catB;
     const cos = catAdj / values.hip;
@@ -171,7 +171,7 @@ function generateCosQ() {
 }
 
 // Função para gerar uma questão sobre Tangente
-function generateTanQ() {
+export function generateTanQ() {
     const values = pythagoreanValues[Math.floor(Math.random() * pythagoreanValues.length)];
     
     const aux = Number(Math.random() >= 0.5);
@@ -187,7 +187,7 @@ function generateTanQ() {
 }
 
 // Função para gerar uma questão sobre Conversão de Radianos para Graus
-function generateRadToDegQ() {
+export function generateRadToDegQ() {
     const pi = 180;
     const dividers = [1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 30, 36, 45, 60, 90, 180];
     
@@ -202,7 +202,7 @@ function generateRadToDegQ() {
 }
 
 // Função para gerar uma questão sobre Conversão de Graus para Radianos
-function generateDegToRadQ() {
+export function generateDegToRadQ() {
     const pi = 180;
     const dividers = [1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 30, 36, 45, 60, 90, 180];
     
@@ -217,7 +217,7 @@ function generateDegToRadQ() {
 }
 
 // Função para gerar uma questão sobre a Relação Geral da Trigonometria
-function generatePythagoreanIdentityQ() {
+export function generatePythagoreanIdentityQ() {
     let values = notableAngles[Math.floor(Math.random() * notableAngles.length)];
 
     const index = Number(Math.random() >= 0.5);
