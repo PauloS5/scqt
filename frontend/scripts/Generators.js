@@ -1,4 +1,5 @@
-﻿const notableAngles = [
+﻿// Ângulos notáveis de 1 à 89
+const notableAngles = [
     {sin: 0.0175, cos: 0.9998, tan: 0.0175},
     {sin: 0.0349, cos: 0.9994, tan: 0.0349},
     {sin: 0.0523, cos: 0.9986, tan: 0.0524},
@@ -90,6 +91,7 @@
     {sin: 0.9998, cos: 0.0175, tan: 57.2900}
 ];
 
+// Ternas pitagóricas comuns
 const pythagoreanValues = [
     {catA: 3,  catB: 4,  hip: 5},
     {catA: 5,  catB: 12, hip: 13},
