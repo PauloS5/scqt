@@ -232,3 +232,21 @@ function generateRadToTanQ() {
         answer: degrees
     }
 }
+
+// Função para gerar uma questão sobre Conversão de Graus para Radianos
+function generateDegToRadQ() {
+    const pi = 180;
+    const dividers = [1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 30, 36, 45, 60, 90, 180];
+    
+    const coefficient = Math.floor(Math.random() * 9) + 1;
+    const divider = dividers[Math.floor(Math.random() * dividers.length)];
+    const degrees = (coefficient * pi) / divider;
+
+    return {
+        value: degrees,
+        answer: {
+            coefficient: coefficient,
+            divider: divider
+        }
+    }
+}
