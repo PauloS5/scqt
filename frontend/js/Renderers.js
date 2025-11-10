@@ -29,8 +29,8 @@ export function renderOptions(count) {
                     class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer mt-2 p-1 rounded mx-2"
                     id="style-${i}">
 
-                    <option value="style1">Demonstrativa</option>
-                    <option value="style2">Objetiva</option>
+                    <option value="D">Demonstrativa</option>
+                    <option value="O">Objetiva</option>
                 </select>
             <div>
         `;

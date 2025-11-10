@@ -1,4 +1,4 @@
-﻿function enviar(questions) {
+﻿function send(questions) {
     fetch("http://localhost/api-pdf/main.php", {
         method: "POST",
         headers: {
