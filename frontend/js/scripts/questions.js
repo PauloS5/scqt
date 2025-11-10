@@ -1,1 +1,232 @@
-﻿
+﻿import { buildQuestions } from '/js/math/Builders.js'
+
+// Função para extrair os dados da configuração de questões
+function getQuestionsConfig() {
+    let i = 1;
+    let questionsConfigList = [];
+
+    while (true) {
+        let themeSelect = document.getElementById(`theme-${i}`);
+        let styleSelect = document.getElementById(`style-${i}`);
+        
+        if ((!themeSelect) || (!styleSelect)) {
+            break;
+        }
+
+        let qTheme = themeSelect.options[themeSelect.selectedIndex].value;
+        let qStyle = styleSelect.options[styleSelect.selectedIndex].value;
+
+        console.log(qTheme)
+        console.log(qStyle)
+        
+        if (!["firstDet", "pythagoras", "sin", "cos", "tan", "radToDeg", "degToRad", "pythagoreanIdentity"].includes(qTheme)) {
+            i++;
+            continue;
+        }
+        if (!['D', 'O'].includes(qStyle)) {
+            i++;
+            continue;
+        }
+        
+        let question = {
+            theme: qTheme,
+            style: qStyle
+        }
+
+        questionsConfigList.push(question);
+        i++;
+    }
+
+    return questionsConfigList;
+}
+
+// Função para gerar as opções de questão
+function renderOptions(count) {
+    const container = document.getElementById("questions-container");
+    container.innerHTML = "";
+
+    for (let i = 1; i <= count; i++) {
+        const div = document.createElement("div");
+        div.className = "bg-gray-50 border border-gray-300 rounded-lg p-4 flex justify-between items-center";
+
+        div.innerHTML = `
+            <span class="font-semibold text-gray-900">QUESTÃO ${i}</span>
+            <div class="flex gap-2">
+                <select
+                    class="bg-white border border-gray-300 text-gray-900 cursor-pointer px-3 py-1 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                    id="theme-${i}">
+                    <option value="firstDet">Primeira Determinação</option>
+                    <option value="pythagoras">Teorema de Pitágoras</option>
+                    <option value="sin">Seno</option>
+                    <option value="cos">Cosseno</option>
+                    <option value="tan">Tangente</option>
+                    <option value="radToDeg">Conversão de Radianos para Graus</option>
+                    <option value="degToRad">Conversão de Graus para Radianos</option>
+                    <option value="pythagoreanIdentity">Relação Geral da Trigonometria</option>
+                </select>
+                <select
+                    class="bg-white border border-gray-300 text-gray-900 cursor-pointer px-3 py-1 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                    id="style-${i}">
+
+                    <option value="D">Demonstrativa</option>
+                    <option value="O">Objetiva</option>
+                </select>
+            </div>
+        `;
+
+        container.appendChild(div);
+    }
+}
+
+// Função para renderizar as questões
+function renderQuestions(questions, container_id) {
+    const container = document.getElementById(container_id);
+    container.innerHTML = "";
+
+    for (let i = 1; i <= questions.length; i++) {
+        let q = questions[i - 1];
+
+        let newQuestion = document.createElement("div");
+        newQuestion.className = "bg-white border border-indigo-200 rounded-lg p-6 mb-4 shadow-sm";
+        newQuestion.innerHTML = `
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Questão ${q.number} - ${q.theme}</h3>
+            <p class="text-gray-800 font-semibold">
+                ${q.context}
+                ${q.hasAlternatives ? `
+                    <br><br><b class="text-gray-900">a)</b> ${q.answers[0]}
+                    <br><b class="text-gray-900">b)</b> ${q.answers[1]}
+                    <br><b class="text-gray-900">c)</b> ${q.answers[2]}
+                    <br><b class="text-gray-900">d)</b> ${q.answers[3]}
+                `: "<br><br><div class='mt-3 p-3 bg-gray-50 border border-gray-300 rounded text-gray-600 italic'>Espaço para resposta demonstrativa</div>"}
+            </p>
+        `;
+
+        container.append(newQuestion);
+    }
+}
+
+// Eventos
+document.getElementById("btn-renderOptions").addEventListener("click", function () {
+    renderOptions(document.getElementById('in-count').value);
+});
+document.getElementById("btn-renderQuestions").addEventListener("click", function () {
+    let fakeQuestions = [
+    {
+        number: 1,
+        theme: "Trigonometria",
+        context: "Qual é o seno de 30°?",
+        hasAlternatives: true,
+        answers: [
+            "1",
+            "0.5",
+            "0",
+            "0.866"
+        ]
+    },
+    {
+        number: 2,
+        theme: "Trigonometria",
+        context: "Em um triângulo retângulo com catetos medindo 6 cm e 8 cm, qual é o valor da hipotenusa?",
+        hasAlternatives: false
+    },
+    {
+        number: 3,
+        theme: "Trigonometria",
+        context: "O cosseno de 60° é igual a:",
+        hasAlternatives: true,
+        answers: [
+            "0.5",
+            "0.866",
+            "1",
+            "0"
+        ]
+    },
+    {
+        number: 4,
+        theme: "Trigonometria",
+        context: "Em trigonometria, o seno é definido como:",
+        hasAlternatives: true,
+        answers: [
+            "Cateto oposto / Cateto adjacente",
+            "Hipotenusa / Cateto oposto",
+            "Cateto oposto / Hipotenusa",
+            "Hipotenusa / Cateto adjacente"
+        ]
+    },
+    {
+        number: 5,
+        theme: "Trigonometria",
+        context: "Qual é o ângulo cujo seno é 1?",
+        hasAlternatives: true,
+        answers: [
+            "30°",
+            "45°",
+            "60°",
+            "90°"
+        ]
+    },
+    {
+        number: 6,
+        theme: "Trigonometria",
+        context: "Qual das relações trigonométricas está correta?",
+        hasAlternatives: true,
+        answers: [
+            "sen²(θ) + cos²(θ) = 2",
+            "sen²(θ) + cos²(θ) = 1",
+            "sen²(θ) - cos²(θ) = 1",
+            "sen(θ) * cos²(θ) = 1"
+        ]
+    },
+    {
+        number: 7,
+        theme: "Trigonometria",
+        context: "A tangente é definida como:",
+        hasAlternatives: true,
+        answers: [
+            "Hipotenusa / Cateto oposto",
+            "Cateto adjacente / Hipotenusa",
+            "Cateto oposto / Cateto adjacente",
+            "Hipotenusa / Cateto adjacente"
+        ]
+    },
+    {
+        number: 8,
+        theme: "Trigonometria",
+        context: "Se o cateto oposto mede 4 cm e a hipotenusa mede 5 cm, qual é o valor aproximado do seno?",
+        hasAlternatives: false
+    },
+    {
+        number: 9,
+        theme: "Trigonometria",
+        context: "Qual é o valor da tangente de 45°?",
+        hasAlternatives: true,
+        answers: [
+            "0",
+            "0.5",
+            "1",
+            "√3"
+        ]
+    },
+    {
+        number: 10,
+        theme: "Trigonometria",
+        context: "Em um triângulo retângulo, qual razão trigonométrica relaciona o cateto adjacente com a hipotenusa?",
+        hasAlternatives: true,
+        answers: [
+            "Seno",
+            "Cosseno",
+            "Tangente",
+            "Secante"
+        ]
+    }
+    ];
+
+    let questionsConfigList = getQuestionsConfig();
+    let questions = buildQuestions(questionsConfigList);
+
+    renderQuestions(fakeQuestions, "questions-list");
+    document.getElementById("mdl_questionsList").classList.remove("hidden");
+});
+document.getElementById("btn-closeModal").addEventListener("click", function () {
+    document.getElementById('mdl_questionsList').classList.add('hidden');
+});
