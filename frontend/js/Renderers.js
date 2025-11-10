@@ -13,9 +13,9 @@ export function renderOptions(count) {
                 <select
                     class="bg-white border border-gray-300 text-gray-900 cursor-pointer px-3 py-1 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
                     id="theme-${i}">
-                    <option value="primeiraDet">Primeira Determinação</option>
-                    <option value="pitagoras">Teorema de Pitágoras</option>
-                    <option value="relacaoTrig">Relação Trigonométrica</option>
+                    <option value="theme1">Primeira Determinação</option>
+                    <option value="theme2">Teorema de Pitágoras</option>
+                    <option value="theme3">Relação Trigonométrica</option>
                 </select>
                 <select
                     class="bg-white border border-gray-300 text-gray-900 cursor-pointer px-3 py-1 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
