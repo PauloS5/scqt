@@ -1,53 +1,104 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <title>Ajuda</title>
-    </head>
-    
-    <body class="flex flex-col min-h-screen">
-        <header class="bg-slate-800 text-white p-2 sticky top-0">
-            <nav class="container mx-auto flex justify-between items-center">
-                <div class="font-bold text-3xl hover:scale-110 duration-550 ease-in-out">
-                    <a href="/">
-                        SCQT
-                    </a>
-                </div>
-                <ul class="flex space-x-4">
-                    <li><a href="/" class="hover:underline">Início</a></li> 
-                    <li><a href="/pages/questions" class="hover:underline">Questões</a></li>
-                    <li><a href="/pages/help" class="hover:underline">Ajuda</a></li>
-                </ul>
-            </nav>
-        </header>
 
-        <main class="bg-slate-50 grow p-8">
-            <!-- COMO CRIAR UMA ATIVIDADE -->
-            <div class="w-4/5 bg-slate-600 text-white p-8 rounded-lg mx-auto mb-8 shadow-lg/20">
-                <h2 class="font-semibold text-2xl mb-8 text-shadow-lg">
-                    Como criar uma atividade?
-                </h2>
-                <p>
-                    Para se criar uma atividade neste sistema basta seguir estes passos simples:
-                    <ul class="list-disc ps-6">
-                        <li>Vá para página '<span>Questões<span>'</li>
-                        <li>Selecione a quantidade de questões que deseja gerar</li>
-                        <li>Clique em 'Gerar'</li>
-                        <li>A partir das questõies geradas escolha as categorias e estilos que cada questão</li>
-                        <li>Ao final clique em 'Gerar Questões'</li>
-                        <li>Confira as questões e selecione o formato de arquivo para impressão</li>
-                        <li>Por fim, baixe e use o arquivo como quizer</li>
-                    </ul>
-                </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Ajuda - SCQT</title>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <header class="bg-white text-white p-4 sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto flex justify-between items-center text-gray-800">
+            <div class="font-bold text-gray-700 hover:text-gray-500 text-3xl hover:scale-110 duration-450 ease-in-out">
+                <a href="/">
+                    SCQT
+                </a>
             </div>
-        </main>
+            <ul class="flex space-x-8">
+                <li class="transform transition-all duration-300 hover:-translate-y-1">
+                    <a href="/"
+                        class="hover:underline underline-offset-3 decoration-2 font-medium text-gray-700 hover:text-gray-900">
+                        Início
+                    </a>
+                </li>
+                <li class="transform transition-all duration-300 hover:-translate-y-1">
+                    <a href="/pages/questions"
+                        class="hover:underline underline-offset-3 decoration-2 font-medium text-gray-700 hover:text-gray-900">
+                        Questões
+                    </a>
+                </li>
+                <li class="transform transition-all duration-300 hover:-translate-y-1">
+                    <a href="/pages/help"
+                        class="hover:underline underline-offset-3 decoration-2 font-medium text-gray-700 hover:text-gray-900">
+                        Ajuda
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <footer class="bg-slate-800 py-2">
-            <p class="text-white text-center">
-                <span class="font-semibold">&copy; 2025 BDIPI.</span> Todos os direitos reservados.
-            </p>
-        </footer>
-    </body>
+    <main class="bg-slate-50 grow p-8">
+        <section class="flex flex-col items-center">
+            <!-- TÍTULO PRINCIPAL -->
+            <h2 class="font-bold text-5xl mb-8 p-4 text-center text-gray-800">
+                Como Usar o SCQT
+            </h2>
+
+            <!-- COMO CRIAR UMA ATIVIDADE -->
+            <div class="w-4/5 bg-white p-8 rounded-lg border border-indigo-200 mb-8 shadow-xl/20">
+                <h3 class="font-bold text-gray-900 text-2xl mb-6">
+                    Como criar uma atividade?
+                </h3>
+                <p class="font-semibold text-gray-900 mb-4">
+                    Para criar uma atividade neste sistema, basta seguir estes passos simples:
+                </p>
+                <ul class="list-disc ps-8 space-y-2 font-semibold text-gray-800">
+                    <li>Vá para a página '<span class="font-bold text-gray-900">Questões</span>'</li>
+                    <li>Selecione a quantidade de questões que deseja gerar</li>
+                    <li>Clique em '<span class="font-bold text-gray-900">Gerar</span>'</li>
+                    <li>A partir das questões geradas, escolha as categorias e estilos de cada questão</li>
+                    <li>Ao final, clique em '<span class="font-bold text-gray-900">Gerar Questões</span>'</li>
+                    <li>Confira as questões e selecione o formato de arquivo para impressão</li>
+                    <li>Por fim, baixe e use o arquivo como quiser</li>
+                </ul>
+            </div>
+
+            <!-- DICAS E SUGESTÕES -->
+            <div class="w-4/5 bg-white p-8 rounded-lg border border-indigo-200 mb-8 shadow-xl/20">
+                <h3 class="font-bold text-gray-900 text-2xl mb-6">
+                    Dicas e Sugestões
+                </h3>
+                <div class="space-y-4 font-semibold text-gray-800">
+                    <p>
+                        <span class="font-bold text-gray-900">• Variedade:</span> Experimente gerar questões de diferentes categorias para criar atividades mais completas e diversificadas.
+                    </p>
+                    <p>
+                        <span class="font-bold text-gray-900">• Personalização:</span> Você pode ajustar o estilo e a dificuldade de cada questão individualmente antes de gerar o arquivo final.
+                    </p>
+                    <p>
+                        <span class="font-bold text-gray-900">• Formatos:</span> O sistema permite exportar em diferentes formatos para facilitar a impressão e distribuição aos alunos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- BOTÃO DE AÇÃO -->
+            <div class="mt-6 mb-6 py-3">
+                <button type="button"
+                    class="bg-gray-800 text-white cursor-pointer p-3 rounded-lg font-bold hover:shadow-xl hover:-translate-y-1 hover:bg-gray-600 transition-all duration-400"
+                    onclick="location='/pages/questions.html';">
+                    Começar Agora
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white p-4 border border-gray-400 shadow-sm">
+        <p class="text-gray-800 text-center">
+            <span class="font-semibold">&copy; 2025 BDIPI.</span> Todos os direitos reservados.
+        </p>
+    </footer>
+</body>
+
 </html>

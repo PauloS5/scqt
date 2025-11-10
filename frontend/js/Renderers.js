@@ -1,38 +1,30 @@
 ﻿// Função para gerar as opções de questão
 export function renderOptions(count) {
     const container = document.getElementById("questions-container");
-
     container.innerHTML = "";
 
     for (let i = 1; i <= count; i++) {
         const div = document.createElement("div");
-        div.className = "text-white flex justify-between items-center";
+        div.className = "bg-gray-50 border border-gray-300 rounded-lg p-4 flex justify-between items-center";
 
         div.innerHTML = `
-            <span class="font-semibold">QUESTÃO ${i}</span>
-            <div>
+            <span class="font-semibold text-gray-900">QUESTÃO ${i}</span>
+            <div class="flex gap-2">
                 <select
-                    class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer mt-2 p-1 rounded mx-2"
+                    class="bg-white border border-gray-300 text-gray-900 cursor-pointer px-3 py-1 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
                     id="theme-${i}">
-
-                    <option value="firstDet">Primeira Determinação</option>
-                    <option value="pythagoras">Teorema de Pitágoras</option>
-                    <option value="sin">Seno</option>
-                    <option value="cos">Cosseno</option>
-                    <option value="tan">Tangente</option>
-                    <option value="radToDeg">Conversão de Radianos para Graus</option>
-                    <option value="degToRad">Conversão de Graus para Radianos</option>
-                    <option value="pythagoreanIdentity">Relação Geral da Trigonometria</option>
-
+                    <option value="theme1">Primeira Determinação</option>
+                    <option value="theme2">Teorema de Pitágoras</option>
+                    <option value="theme3">Relação Trigonométrica</option>
                 </select>
                 <select
-                    class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer mt-2 p-1 rounded mx-2"
+                    class="bg-white border border-gray-300 text-gray-900 cursor-pointer px-3 py-1 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
                     id="style-${i}">
 
                     <option value="D">Demonstrativa</option>
                     <option value="O">Objetiva</option>
                 </select>
-            <div>
+            </div>
         `;
 
         container.appendChild(div);
@@ -42,23 +34,24 @@ export function renderOptions(count) {
 // Função para renderizar as questões
 export function renderQuestions(questions, container_id) {
     const container = document.getElementById(container_id);
+    container.innerHTML = "";
 
     for (let i = 1; i <= questions.length; i++) {
-        let q = questions[i-1];
+        let q = questions[i - 1];
 
         let newQuestion = document.createElement("div");
+        newQuestion.className = "bg-white border border-indigo-200 rounded-lg p-6 mb-4 shadow-sm";
         newQuestion.innerHTML = `
-            <h3 class="font-semibold">Questão ${q.number} - ${q.theme}</h3>
-            <p>
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Questão ${q.number} - ${q.theme}</h3>
+            <p class="text-gray-800 font-semibold">
                 ${q.context}
                 ${q.hasAlternatives ? `
-                    <br> <b>a)</b> ${q.answers[0]}
-                    <br> <b>b)</b> ${q.answers[1]}
-                    <br> <b>c)</b> ${q.answers[2]}
-                    <br> <b>d)</b> ${q.answers[3]}
-                `:"<br><br><br><br><br>"}
+                    <br><br><b class="text-gray-900">a)</b> ${q.answers[0]}
+                    <br><b class="text-gray-900">b)</b> ${q.answers[1]}
+                    <br><b class="text-gray-900">c)</b> ${q.answers[2]}
+                    <br><b class="text-gray-900">d)</b> ${q.answers[3]}
+                `: "<br><br><div class='mt-3 p-3 bg-gray-50 border border-gray-300 rounded text-gray-600 italic'>Espaço para resposta dissertativa</div>"}
             </p>
-            <hr>
         `;
 
         container.append(newQuestion);
