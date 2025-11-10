@@ -89,7 +89,7 @@
         </section>
 
         <!-- MODAL DE QUESTÕES -->
-        <div id="questionsList" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div id="mdl_questionsList" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
             <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl">
                 <!-- CABEÇALHO DO MODAL -->
                 <div class="bg-white border-b border-gray-200 p-6 rounded-t-lg">
@@ -132,142 +132,7 @@
             <span class="font-semibold">&copy; 2025 BDIPI.</span> Todos os direitos reservados.
         </p>
     </footer>
-
-    <script type="module">
-        import { renderQuestions, renderOptions } from '/js/Renderers.js';
-
-            let questions = [
-            {
-                number: 1,
-                theme: "Trigonometria",
-                context: "Qual é o seno de 30°?",
-                hasAlternatives: true,
-                answers: [
-                    "1",
-                    "0.5",
-                    "0",
-                    "0.866"
-                ]
-            },
-            {
-                number: 2,
-                theme: "Trigonometria",
-                context: "Em um triângulo retângulo com catetos medindo 6 cm e 8 cm, qual é o valor da hipotenusa?",
-                hasAlternatives: false
-            },
-            {
-                number: 3,
-                theme: "Trigonometria",
-                context: "O cosseno de 60° é igual a:",
-                hasAlternatives: true,
-                answers: [
-                    "0.5",
-                    "0.866",
-                    "1",
-                    "0"
-                ]
-            },
-            {
-                number: 4,
-                theme: "Trigonometria",
-                context: "Em trigonometria, o seno é definido como:",
-                hasAlternatives: true,
-                answers: [
-                    "Cateto oposto / Cateto adjacente",
-                    "Hipotenusa / Cateto oposto",
-                    "Cateto oposto / Hipotenusa",
-                    "Hipotenusa / Cateto adjacente"
-                ]
-            },
-            {
-                number: 5,
-                theme: "Trigonometria",
-                context: "Qual é o ângulo cujo seno é 1?",
-                hasAlternatives: true,
-                answers: [
-                    "30°",
-                    "45°",
-                    "60°",
-                    "90°"
-                ]
-            },
-            {
-                number: 6,
-                theme: "Trigonometria",
-                context: "Qual das relações trigonométricas está correta?",
-                hasAlternatives: true,
-                answers: [
-                    "sen²(θ) + cos²(θ) = 2",
-                    "sen²(θ) + cos²(θ) = 1",
-                    "sen²(θ) - cos²(θ) = 1",
-                    "sen(θ) * cos²(θ) = 1"
-                ]
-            },
-            {
-                number: 7,
-                theme: "Trigonometria",
-                context: "A tangente é definida como:",
-                hasAlternatives: true,
-                answers: [
-                    "Hipotenusa / Cateto oposto",
-                    "Cateto adjacente / Hipotenusa",
-                    "Cateto oposto / Cateto adjacente",
-                    "Hipotenusa / Cateto adjacente"
-                ]
-            },
-            {
-                number: 8,
-                theme: "Trigonometria",
-                context: "Se o cateto oposto mede 4 cm e a hipotenusa mede 5 cm, qual é o valor aproximado do seno?",
-                hasAlternatives: false
-            },
-            {
-                number: 9,
-                theme: "Trigonometria",
-                context: "Qual é o valor da tangente de 45°?",
-                hasAlternatives: true,
-                answers: [
-                    "0",
-                    "0.5",
-                    "1",
-                    "√3"
-                ]
-            },
-            {
-                number: 10,
-                theme: "Trigonometria",
-                context: "Em um triângulo retângulo, qual razão trigonométrica relaciona o cateto adjacente com a hipotenusa?",
-                hasAlternatives: true,
-                answers: [
-                    "Seno",
-                    "Cosseno",
-                    "Tangente",
-                    "Secante"
-                ]
-            }
-        ];
-
-        // Event Listeners
-        document.getElementById("btn-renderOptions").addEventListener("click", function () {
-            renderOptions(document.getElementById('in-count').value);
-        });
-
-        document.getElementById("btn-renderQuestions").addEventListener("click", function () {
-            renderQuestions(questions, "questions-list");
-            document.getElementById('questionsList').classList.remove('hidden');
-        });
-
-        document.getElementById("btn-closeModal").addEventListener("click", function () {
-            document.getElementById('questionsList').classList.add('hidden');
-        });
-
-        // Fechar modal ao clicar fora dele
-        document.getElementById('questionsList').addEventListener('click', function (e) {
-            if (e.target === this) {
-                this.classList.add('hidden');
-            }
-        });
-    </script>
+    <script type="module" src="/js/scripts/questions.js"></script>
 </body>
 
 </html>
