@@ -15,9 +15,15 @@ export function renderOptions(count) {
                     class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer mt-2 p-1 rounded mx-2"
                     id="theme-${i}">
 
-                    <option value="theme1">Primeira Determinação</option>
-                    <option value="theme2">Teorema de Pitágoras</option>
-                    <option value="theme3">Relação Trigométrica</option>
+                    <option value="firstDet">Primeira Determinação</option>
+                    <option value="pythagoras">Teorema de Pitágoras</option>
+                    <option value="sin">Seno</option>
+                    <option value="cos">Cosseno</option>
+                    <option value="tan">Tangente</option>
+                    <option value="radToDeg">Conversão de Radianos para Graus</option>
+                    <option value="degToRad">Conversão de Graus para Radianos</option>
+                    <option value="pythagoreanIdentity">Relação Geral da Trigonometria</option>
+
                 </select>
                 <select
                     class="bg-slate-800 hover:bg-slate-700 text-white cursor-pointer mt-2 p-1 rounded mx-2"
