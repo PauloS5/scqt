@@ -51,18 +51,6 @@ function main() {
     // Cria o objeto padrão usando o builder
     const questionObject = buildQuestionObject(theme, generated);
 
-    // Se estilo for demonstrativa, adiciona alternativas
-    if (style === "D") {
-      const answers = [...document.querySelectorAll(`.answer-${i}`)]
-        .map(input => input.value.trim())
-        .filter(v => v !== "");
-
-      if (answers.length > 0) {
-        questionObject.hasAlternatives = true;
-        questionObject.answers = answers;
-      }
-    }
-
     questions.push(questionObject);
     i++;
   }
