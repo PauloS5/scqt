@@ -55,7 +55,7 @@ export function renderQuestions(questions, container_id) {
                     <br><b class="text-gray-900">b)</b> ${q.answers[1]}
                     <br><b class="text-gray-900">c)</b> ${q.answers[2]}
                     <br><b class="text-gray-900">d)</b> ${q.answers[3]}
-                `: "<br><br><div class='mt-3 p-3 bg-gray-50 border border-gray-300 rounded text-gray-600 italic'>Espaço para resposta dissertativa</div>"}
+                `: "<br><br><div class='mt-3 p-3 bg-gray-50 border border-gray-300 rounded text-gray-600 italic'>Espaço para resposta demonstrativa</div>"}
             </p>
         `;
 
