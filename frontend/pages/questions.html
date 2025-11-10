@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Questões</title>
+    <title>Questões - SCQT</title>
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -136,9 +134,9 @@
     </footer>
 
     <script type="module">
-        import { renderQuestions, renderOptions } from '/scripts/Renderers.js';
+        import { renderQuestions, renderOptions } from '/js/Renderers.js';
 
-        let questions = [
+            let questions = [
             {
                 number: 1,
                 theme: "Trigonometria",
@@ -249,15 +247,25 @@
             }
         ];
 
-
+        // Event Listeners
         document.getElementById("btn-renderOptions").addEventListener("click", function () {
             renderOptions(document.getElementById('in-count').value);
         });
 
         document.getElementById("btn-renderQuestions").addEventListener("click", function () {
             renderQuestions(questions, "questions-list");
+            document.getElementById('questionsList').classList.remove('hidden');
+        });
 
-            questionsList.showModal();
+        document.getElementById("btn-closeModal").addEventListener("click", function () {
+            document.getElementById('questionsList').classList.add('hidden');
+        });
+
+        // Fechar modal ao clicar fora dele
+        document.getElementById('questionsList').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
         });
     </script>
 </body>
