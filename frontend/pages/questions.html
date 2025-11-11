@@ -9,7 +9,7 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
-            plugins: [daisyui],
+            plugins: [],
             daisyui: {
                 themes: ['light', 'dark'],
             },
@@ -100,49 +100,49 @@
         </nav>
     </header>
 
-    <main class="bg-slate-50 grow p-8">
+    <main class="bg-base-200 grow p-8">
         <section class="flex flex-col items-center">
             <!-- TÍTULO PRINCIPAL -->
-            <h2 class="font-bold text-5xl mb-8 p-4 text-center text-gray-800">
+            <h2 class="font-bold text-5xl mb-8 p-4 text-center text-base-content">
                 Gerar Questões
             </h2>
 
             <!-- CARD DE CONFIGURAÇÃO -->
-            <div class="w-4/5 max-w-3xl bg-white p-8 rounded-lg border border-indigo-200 mb-8 shadow-xl/20">
-                <h3 class="font-bold text-gray-900 text-2xl mb-6">
+            <div class="w-4/5 max-w-3xl bg-base-100 p-8 rounded-lg mb-8 shadow-xl">
+                <h3 class="font-bold text-base-content text-2xl mb-6">
                     Configurar Questionário
                 </h3>
 
                 <!-- QUANTIDADE DE QUESTÕES -->
                 <div class="mb-6">
-                    <label for="in-count" class="block font-semibold text-gray-900 mb-2">
+                    <label for="in-count" class="block font-semibold text-base-content mb-2">
                         Quantidade de Questões:
                     </label>
                     <div class="flex gap-4 items-center">
                         <input type="number" id="in-count"
-                            class="flex-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                            class="flex-1 bg-base-200 text-base-content rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
                             min="1" value="1">
                         <button id="btn-renderOptions"
-                            class="bg-gray-800 text-white cursor-pointer font-semibold py-2 px-6 rounded-lg hover:bg-gray-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                            class="btn bg-gray-800 text-white p-5 font-semibold hover:bg-gray-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
                             Gerar
                         </button>
                     </div>
                 </div>
 
-                <hr class="my-6 border-gray-200">
+                <div class="my-6 h-px bg-base-300"></div>
 
                 <!-- QUESTÕES GERADAS -->
                 <div>
-                    <h3 class="font-bold text-gray-900 text-xl mb-4">
+                    <h3 class="font-bold text-base-content text-xl mb-4">
                         Questões Geradas
                     </h3>
                     <div class="flex flex-col gap-3" id="questions-container">
-                        <p class="text-gray-600 text-center py-8 italic">
+                        <p class="text-base-content text-center py-8 italic opacity-70">
                             Clique em "Gerar" para criar as opções de questões
                         </p>
                     </div>
                     <button id="btn-renderQuestions"
-                        class="bg-gray-800 text-white cursor-pointer font-semibold mt-6 py-3 px-6 rounded-lg w-full hover:bg-gray-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                        class="btn bg-gray-800 text-white text-lg font-semibold mt-6 p-6 w-full hover:bg-gray-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
                         Renderizar Questões
                     </button>
                 </div>
@@ -150,42 +150,38 @@
         </section>
 
         <!-- MODAL DE QUESTÕES -->
-        <div id="mdl_questionsList" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl">
-                <!-- CABEÇALHO DO MODAL -->
-                <div class="bg-white border-b border-gray-200 p-6 rounded-t-lg">
-                    <div class="flex justify-between items-center">
-                        <h2 class="text-2xl font-bold text-gray-900">Questões Geradas</h2>
-                        <button id="btn-closeModal"
-                            class="text-gray-500 hover:text-gray-900 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                            ✕
-                        </button>
-                    </div>
+        <dialog id="mdl_questionsList" class="modal">
+            <div
+                class="modal-box max-w-4xl w-full max-h-[90vh] flex flex-col p-0 bg-base-100 text-base-content shadow-xl rounded-lg">
+
+                <!-- Botão de fechar -->
+                <form method="dialog">
+                    <button id="btn-closeModal"
+                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+
+                <!-- Cabeçalho -->
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold">Questões Geradas</h2>
                 </div>
 
-                <!-- CONTEÚDO DO MODAL -->
-                <div id="questions-list" class="flex-1 overflow-y-auto p-6 bg-gray-50">
+                <!-- Conteúdo -->
+                <div id="questions-list" class="flex-1 overflow-y-auto p-6 bg-base-200">
                     <!-- Questões serão inseridas aqui -->
                 </div>
 
-                <!-- RODAPÉ DO MODAL -->
-                <div class="bg-white border-t border-gray-200 p-6 rounded-b-lg flex justify-between items-center">
+                <!-- Rodapé -->
+                <div class="p-6 flex justify-between items-center bg-base-100">
                     <div class="flex items-center gap-3">
-                        <label for="in-format" class="font-semibold text-gray-900">Formato:</label>
-                        <select id="in-format"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
-                            <option value="pdf">.pdf</option>
-                            <option value="txt">.txt</option>
-                            <option value="json">.json</option>
-                        </select>
+                        <label for="in-format" class="font-semibold">Formato: <strong>.pdf</strong></label>
                     </div>
                     <button id="btn-print"
-                        class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                        class="btn bg-gray-800 text-white hover:bg-gray-600 hover:shadow-lg transition-all duration-300">
                         Imprimir
                     </button>
                 </div>
             </div>
-        </div>
+        </dialog>
     </main>
 
     <footer class="bg-base-100 p-4 shadow-lg">
