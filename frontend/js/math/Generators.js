@@ -112,7 +112,7 @@ export function generateFirstDetQ() {
 
     return {
         values: { totalDegrees: turnsCount + firstDet },
-        answers: { turnsCount: turnsCount, firstDet: firstDet }
+        answer: { firstDet: firstDet }
     };
 }
 
