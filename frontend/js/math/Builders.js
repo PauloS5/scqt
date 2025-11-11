@@ -1,4 +1,6 @@
-﻿function fisherYates(arr) {
+﻿import * as generators from '/js/math/Generators.js'
+
+function fisherYates(arr) {
     for (let i = arr.length-1; i > 0; i--) {
         const j = Math.floor(Math.random * (i+1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -155,6 +157,7 @@ export function buildQuestions(questionsData) {
     let questions = [];
 
     for (const q of questionsData) {
+        let preparedQuestion;
         let newQuestion = {};
         newQuestion.theme = "";
         newQuestion.context = "";
@@ -166,91 +169,99 @@ export function buildQuestions(questionsData) {
         }
         switch (q.theme) {
             case "firstDet":
+                preparedQuestion = generators.generateFirstDetQ();
                 newQuestion.theme = "Primeira Determinação";
-                newQuestion.context = `Determine a primeira determinação do ângulo ${q.values.totalDegrees}:`;
+                newQuestion.context = `Determine a primeira determinação do ângulo ${preparedQuestion.values.totalDegrees}:`;
                 if (hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForFirstDetQ(q.answer.firstDet);
+                    newQuestion.answers = generateAlternativesForFirstDetQ(preparedQuestion.answer.firstDet);
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " °";
                     });
                 }
                 break; 
             case "pythagoras":
+                preparedQuestion = generators.generatePythagoreanTheoremQ();
                 newQuestion.theme = "Teorema de Pitágoras";
 
-                if (q.answer.hip){
-                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${q.values.catA} e outro que mede ${q.values.catA}, determine a hipotenusa:`;
+                if (preparedQuestion.answer.hip){
+                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${preparedQuestion.values.catA} e outro que mede ${preparedQuestion.values.catA}, determine a hipotenusa:`;
                 }
-                if (q.answer.catA){
-                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${q.values.catB} e hipotenusa medindo ${q.values.hip}, determine o valor do outro cateto:`;
+                if (preparedQuestion.answer.catA){
+                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${preparedQuestion.values.catB} e hipotenusa medindo ${preparedQuestion.values.hip}, determine o valor do outro cateto:`;
                 }
-                if (q.answer.catB){
-                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${q.values.catA} e hipotenusa medindo ${q.values.hip}, determine o valor do outro cateto:`;
+                if (preparedQuestion.answer.catB){
+                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${preparedQuestion.values.catA} e hipotenusa medindo ${preparedQuestion.values.hip}, determine o valor do outro cateto:`;
                 }
 
                 if (hasAlternatives) {
-                    if (q.answer.hip){
-                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(q.answers.hip);
+                    if (preparedQuestion.answer.hip){
+                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answers.hip);
                     }
-                    if (q.answer.catA){
-                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(q.answers.catA);
+                    if (preparedQuestion.answer.catA){
+                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answers.catA);
                     }
-                    if (q.answer.catB){
-                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(q.answers.catB);
+                    if (preparedQuestion.answer.catB){
+                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answers.catB);
                     }
                 }
                 break;
             case "sin":
+                preparedQuestion = generators.generateSinQ();
                 newQuestion.theme = "Seno";
-                newQuestion.context = `Determine o seno de um ângulo α em que seu cateto oposto mede ${q.values.catOpp} e sua hipotenusa mede ${q.values.hip}:`;
+                newQuestion.context = `Determine o seno de um ângulo α em que seu cateto oposto mede ${preparedQuestion.values.catOpp} e sua hipotenusa mede ${preparedQuestion.values.hip}:`;
                 if (hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForSinQ(q.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForSinQ(preparedQuestion.answers.firstDet)
                 }
                 break;
             case "cos":
+                preparedQuestion = generators.generateCosQ();
                 newQuestion.theme = "Cosseno";
-                newQuestion.context = `Determine o cosseno de um ângulo α em que seu cateto adjacente mede ${q.values.catAdj} e sua hipotenusa mede ${q.values.hip}:`;
+                newQuestion.context = `Determine o cosseno de um ângulo α em que seu cateto adjacente mede ${preparedQuestion.values.catAdj} e sua hipotenusa mede ${preparedQuestion.values.hip}:`;
                 if (hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForCosQ(q.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForCosQ(preparedQuestion.answers.firstDet)
                 }
                 break;
             case "tan":
+                preparedQuestion = generators.generateTanQ();
                 newQuestion.theme = "Tangente";
-                newQuestion.context = `Determine o tangente de um ângulo α em que seu cateto adjacente mede ${q.values.catAdj} seu cateto oposto mede ${q.values.catOpp}:`;
+                newQuestion.context = `Determine o tangente de um ângulo α em que seu cateto adjacente mede ${preparedQuestion.values.catAdj} seu cateto oposto mede ${preparedQuestion.values.catOpp}:`;
                 if (hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForTanQ(q.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForTanQ(preparedQuestion.answers.firstDet)
                 }
                 break;
             case "radToDeg":
+                preparedQuestion = generators.generateRadToDegQ();
                 newQuestion.theme = "Conversão: Radianos para Graus";
-                newQuestion.context = `Converta ${q.values.coefficient}π/${q.values.divider} rad em graus:`;
+                newQuestion.context = `Converta ${preparedQuestion.values.coefficient}π/${preparedQuestion.values.divider} rad em graus:`;
                 if (hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForRadToDegQ(q.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForRadToDegQ(preparedQuestion.answers.firstDet)
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " °";
                     });
                 }
                 break;
             case "degToRad":
+                preparedQuestion = generators.generateDegToRadQ();
                 newQuestion.theme = "Conversão: Graus para Radianos";
-                newQuestion.context = `Converta ${q.values.degrees} graus em radianos:`;
+                newQuestion.context = `Converta ${preparedQuestion.values.degrees} graus em radianos:`;
                 if (hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForDegToRadQ(q.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForDegToRadQ(preparedQuestion.answers.firstDet)
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " rad";
                     });
                 }
                 break;
             case "pythagoreanIdentity":
+                preparedQuestion = generators.generatePythagoreanIdentityQ();
                 newQuestion.theme = "Relação Fundamental da Trigonometria";
-                if (q.answer.cos) {
-                    newQuestion.context = `Calcule o valor do cosseno de um ângulo α sendo o seno do mesmo é ${q.values.sin}:`;
+                if (preparedQuestion.answer.cos) {
+                    newQuestion.context = `Calcule o valor do cosseno de um ângulo α sendo o seno do mesmo é ${preparedQuestion.values.sin}:`;
                 }
-                if (q.answer.sin) {
-                    newQuestion.context = `Calcule o valor do seno de um ângulo α sendo o cosseno do mesmo é ${q.values.cos}:`;
+                if (preparedQuestion.answer.sin) {
+                    newQuestion.context = `Calcule o valor do seno de um ângulo α sendo o cosseno do mesmo é ${preparedQuestion.values.cos}:`;
                 }
                 if (hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(q.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(preparedQuestion.answers.firstDet)
                 }
                 break;
         }
