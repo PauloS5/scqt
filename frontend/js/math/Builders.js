@@ -254,5 +254,7 @@ export function buildQuestions(questionsData) {
                 }
                 break;
         }
+        questions.push(newQuestion);
     }
+    return questions;
 }
