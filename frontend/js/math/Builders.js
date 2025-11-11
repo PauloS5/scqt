@@ -172,7 +172,7 @@ export function buildQuestions(questionsData) {
                 preparedQuestion = generators.generateFirstDetQ();
                 newQuestion.theme = "Primeira Determinação";
                 newQuestion.context = `Determine a primeira determinação do ângulo ${preparedQuestion.values.totalDegrees}:`;
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     newQuestion.answers = generateAlternativesForFirstDetQ(preparedQuestion.answer.firstDet);
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " °";
@@ -193,7 +193,7 @@ export function buildQuestions(questionsData) {
                     newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${preparedQuestion.values.catA} e hipotenusa medindo ${preparedQuestion.values.hip}, determine o valor do outro cateto:`;
                 }
 
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     if (preparedQuestion.answer.hip){
                         newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answers.hip);
                     }
@@ -209,7 +209,7 @@ export function buildQuestions(questionsData) {
                 preparedQuestion = generators.generateSinQ();
                 newQuestion.theme = "Seno";
                 newQuestion.context = `Determine o seno de um ângulo α em que seu cateto oposto mede ${preparedQuestion.values.catOpp} e sua hipotenusa mede ${preparedQuestion.values.hip}:`;
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     newQuestion.answers = generateAlternativesForSinQ(preparedQuestion.answers.firstDet)
                 }
                 break;
@@ -217,7 +217,7 @@ export function buildQuestions(questionsData) {
                 preparedQuestion = generators.generateCosQ();
                 newQuestion.theme = "Cosseno";
                 newQuestion.context = `Determine o cosseno de um ângulo α em que seu cateto adjacente mede ${preparedQuestion.values.catAdj} e sua hipotenusa mede ${preparedQuestion.values.hip}:`;
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     newQuestion.answers = generateAlternativesForCosQ(preparedQuestion.answers.firstDet)
                 }
                 break;
@@ -225,7 +225,7 @@ export function buildQuestions(questionsData) {
                 preparedQuestion = generators.generateTanQ();
                 newQuestion.theme = "Tangente";
                 newQuestion.context = `Determine o tangente de um ângulo α em que seu cateto adjacente mede ${preparedQuestion.values.catAdj} seu cateto oposto mede ${preparedQuestion.values.catOpp}:`;
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     newQuestion.answers = generateAlternativesForTanQ(preparedQuestion.answers.firstDet)
                 }
                 break;
@@ -233,7 +233,7 @@ export function buildQuestions(questionsData) {
                 preparedQuestion = generators.generateRadToDegQ();
                 newQuestion.theme = "Conversão: Radianos para Graus";
                 newQuestion.context = `Converta ${preparedQuestion.values.coefficient}π/${preparedQuestion.values.divider} rad em graus:`;
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     newQuestion.answers = generateAlternativesForRadToDegQ(preparedQuestion.answers.firstDet)
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " °";
@@ -244,7 +244,7 @@ export function buildQuestions(questionsData) {
                 preparedQuestion = generators.generateDegToRadQ();
                 newQuestion.theme = "Conversão: Graus para Radianos";
                 newQuestion.context = `Converta ${preparedQuestion.values.degrees} graus em radianos:`;
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     newQuestion.answers = generateAlternativesForDegToRadQ(preparedQuestion.answers.firstDet)
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " rad";
@@ -260,7 +260,7 @@ export function buildQuestions(questionsData) {
                 if (preparedQuestion.answer.sin) {
                     newQuestion.context = `Calcule o valor do seno de um ângulo α sendo o cosseno do mesmo é ${preparedQuestion.values.cos}:`;
                 }
-                if (hasAlternatives) {
+                if (newQuestion.hasAlternatives) {
                     newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(preparedQuestion.answers.firstDet)
                 }
                 break;

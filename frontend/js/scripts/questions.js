@@ -16,9 +16,6 @@ function getQuestionsConfig() {
         let qTheme = themeSelect.options[themeSelect.selectedIndex].value;
         let qStyle = styleSelect.options[styleSelect.selectedIndex].value;
 
-        console.log(qTheme)
-        console.log(qStyle)
-
         if (!["firstDet", "pythagoras", "sin", "cos", "tan", "radToDeg", "degToRad", "pythagoreanIdentity"].includes(qTheme)) {
             i++;
             continue;
@@ -227,6 +224,7 @@ document.getElementById("btn-renderQuestions").addEventListener("click", functio
 
     let questionsConfigList = getQuestionsConfig();
     let questions = buildQuestions(questionsConfigList);
+    console.log(questions);
 
     renderQuestions(fakeQuestions, "questions-list");
     document.getElementById("mdl_questionsList").showModal();
