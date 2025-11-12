@@ -109,7 +109,7 @@ function generateAlternativesForDegToRadQ(coefficient, divider) {
     let alternatives = [];
     alternatives.push({coefficient: coefficient, divider: divider});
     alternatives.push({coefficient: divider, divider: coefficient});
-    alternatives.push({coefficient: coefficient (()=>{
+    alternatives.push({coefficient: (()=>{
         let value;
         do {
             const coe = (Math.random >= 0.5) ? 1 : -1;
@@ -195,13 +195,13 @@ export function buildQuestions(questionsData) {
 
                 if (newQuestion.hasAlternatives) {
                     if (preparedQuestion.answer.hip){
-                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answers.hip);
+                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answer.hip);
                     }
                     if (preparedQuestion.answer.catA){
-                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answers.catA);
+                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answer.catA);
                     }
                     if (preparedQuestion.answer.catB){
-                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answers.catB);
+                        newQuestion.answers = generateAlternativesForPythagoreanTheoremQ(preparedQuestion.answer.catB);
                     }
                 }
                 break;
@@ -210,7 +210,7 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Seno";
                 newQuestion.context = `Determine o seno de um ângulo α em que seu cateto oposto mede ${preparedQuestion.values.catOpp} e sua hipotenusa mede ${preparedQuestion.values.hip}:`;
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForSinQ(preparedQuestion.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForSinQ(preparedQuestion.answer.sin)
                 }
                 break;
             case "cos":
@@ -218,7 +218,7 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Cosseno";
                 newQuestion.context = `Determine o cosseno de um ângulo α em que seu cateto adjacente mede ${preparedQuestion.values.catAdj} e sua hipotenusa mede ${preparedQuestion.values.hip}:`;
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForCosQ(preparedQuestion.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForCosQ(preparedQuestion.answer.cos)
                 }
                 break;
             case "tan":
@@ -226,7 +226,7 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Tangente";
                 newQuestion.context = `Determine o tangente de um ângulo α em que seu cateto adjacente mede ${preparedQuestion.values.catAdj} seu cateto oposto mede ${preparedQuestion.values.catOpp}:`;
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForTanQ(preparedQuestion.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForTanQ(preparedQuestion.answer.tan)
                 }
                 break;
             case "radToDeg":
@@ -234,7 +234,7 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Conversão: Radianos para Graus";
                 newQuestion.context = `Converta ${preparedQuestion.values.coefficient}π/${preparedQuestion.values.divider} rad em graus:`;
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForRadToDegQ(preparedQuestion.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForRadToDegQ(preparedQuestion.answer.firstDet)
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " °";
                     });
@@ -245,7 +245,7 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Conversão: Graus para Radianos";
                 newQuestion.context = `Converta ${preparedQuestion.values.degrees} graus em radianos:`;
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForDegToRadQ(preparedQuestion.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForDegToRadQ(preparedQuestion.answer.firstDet)
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " rad";
                     });
@@ -261,7 +261,7 @@ export function buildQuestions(questionsData) {
                     newQuestion.context = `Calcule o valor do seno de um ângulo α sendo o cosseno do mesmo é ${preparedQuestion.values.cos}:`;
                 }
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(preparedQuestion.answers.firstDet)
+                    newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(preparedQuestion.answer.firstDet)
                 }
                 break;
         }
