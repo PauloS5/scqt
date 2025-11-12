@@ -48,6 +48,11 @@ function generateAlternativesForSinQ(value) {
         return n;
     })());
     
+    alternatives[0] = Math.round(alternatives[0] * 100)/100;
+    alternatives[1] = Math.round(alternatives[1] * 100)/100;
+    alternatives[2] = Math.round(alternatives[2] * 100)/100;
+    alternatives[3] = Math.round(alternatives[3] * 100)/100;
+
     return fisherYates(alternatives);
 }
 
@@ -70,6 +75,11 @@ function generateAlternativesForCosQ(value) {
         return n;
     })());
     
+    alternatives[0] = Math.round(alternatives[0] * 100)/100;
+    alternatives[1] = Math.round(alternatives[1] * 100)/100;
+    alternatives[2] = Math.round(alternatives[2] * 100)/100;
+    alternatives[3] = Math.round(alternatives[3] * 100)/100;
+
     return fisherYates(alternatives);
 }
 
@@ -91,6 +101,11 @@ function generateAlternativesForTanQ(value) {
         } while ((n === alternatives[1]) && (n === alternatives[2]));
         return n;
     })());
+    
+    alternatives[0] = Math.round(alternatives[0] * 100)/100;
+    alternatives[1] = Math.round(alternatives[1] * 100)/100;
+    alternatives[2] = Math.round(alternatives[2] * 100)/100;
+    alternatives[3] = Math.round(alternatives[3] * 100)/100;
     
     return fisherYates(alternatives);
 }
