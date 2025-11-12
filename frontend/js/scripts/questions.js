@@ -37,6 +37,15 @@ function getQuestionsConfig() {
     return questionsConfigList;
 }
 
+// Função para extrair dados dos questões geradas
+function getQuestions() {
+    let list = [];
+
+    while (true) {
+        
+    }
+}
+
 // Função para gerar as opções de questão
 function renderOptions(count) {
     const container = document.getElementById("questions-container");
@@ -84,15 +93,18 @@ function renderQuestions(questions, container_id) {
 
         let newQuestion = document.createElement("div");
         newQuestion.className = "bg-base-100 rounded-lg p-6 mb-4 shadow-md";
+        newQuestion.id = `question-${i}`
         newQuestion.innerHTML = `
             <h3 class="font-bold text-base-content text-lg mb-3">Questão ${i} - ${q.theme}</h3>
-            <p class="text-base-content font-semibold">
+            <p class="text-base-content font-semibold" id="question-${i}-context">
                 ${q.context}
                 ${q.hasAlternatives ? `
-                <br><br><b class="text-base-content">a)</b> ${q.answers[0]}
+                <div id="question-${i}-alternatives">
+                <br><b class="text-base-content">a)</b> ${q.answers[0]}
                 <br><b class="text-base-content">b)</b> ${q.answers[1]}
                 <br><b class="text-base-content">c)</b> ${q.answers[2]}
                 <br><b class="text-base-content">d)</b> ${q.answers[3]}
+                </div>
                 ` : `
                 <br><br>
                 <div class='mt-3 p-3 bg-base-200 rounded text-base-content italic'>
@@ -116,6 +128,9 @@ document.getElementById("btn-renderQuestions").addEventListener("click", functio
 
     renderQuestions(questions, "questions-list");
     document.getElementById("mdl_questionsList").showModal();
+});
+document.getElementById("btn-print").addEventListener("click", function () {
+    console.log(getQuestions());
 });
 document.getElementById("btn-closeModal").addEventListener("click", function () {
     document.getElementById('mdl_questionsList').close();
