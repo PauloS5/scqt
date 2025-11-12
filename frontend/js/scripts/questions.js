@@ -40,10 +40,36 @@ function getQuestionsConfig() {
 // Função para extrair dados dos questões geradas
 function getQuestions() {
     let list = [];
-
+    let el;
+    let i = 1;
     while (true) {
-        
+        el = document.getElementById(`question-${i}`);
+        if (el === null) {
+            break;
+        }
+        console.log("test")
+
+        const theme = document.getElementById(`question-${i}-theme`).textContent;
+        const context = document.getElementById(`question-${i}-context`).textContent;
+        const alternatives = document.getElementById(`question-${i}-alternatives`);
+
+        let data = {
+            theme: theme,
+            context: context,
+            hasAlternatives: Boolean(alternatives),
+            answers: !Boolean(alternatives) ? [] : [
+                document.getElementById(`question-${i}-answer-a`).textContent,
+                document.getElementById(`question-${i}-answer-b`).textContent,
+                document.getElementById(`question-${i}-answer-c`).textContent,
+                document.getElementById(`question-${i}-answer-d`).textContent
+            ]
+        };
+
+        list.push(data);
+        i++;
     }
+
+    return list;
 }
 
 // Função para gerar as opções de questão
@@ -95,15 +121,15 @@ function renderQuestions(questions, container_id) {
         newQuestion.className = "bg-base-100 rounded-lg p-6 mb-4 shadow-md";
         newQuestion.id = `question-${i}`
         newQuestion.innerHTML = `
-            <h3 class="font-bold text-base-content text-lg mb-3">Questão ${i} - ${q.theme}</h3>
-            <p class="text-base-content font-semibold" id="question-${i}-context">
-                ${q.context}
+            <h3 class="font-bold text-base-content text-lg mb-3" id="question-${i}-theme">Questão ${i} - ${q.theme}</h3>
+            <p class="text-base-content font-semibold"">
+                <span id="question-${i}-context">${q.context}</span>
                 ${q.hasAlternatives ? `
                 <div id="question-${i}-alternatives">
-                <br><b class="text-base-content">a)</b> ${q.answers[0]}
-                <br><b class="text-base-content">b)</b> ${q.answers[1]}
-                <br><b class="text-base-content">c)</b> ${q.answers[2]}
-                <br><b class="text-base-content">d)</b> ${q.answers[3]}
+                <br><b class="text-base-content">a)</b> <span id="question-${i}-answer-a">${q.answers[0]}</span>
+                <br><b class="text-base-content">b)</b> <span id="question-${i}-answer-b">${q.answers[1]}</span>
+                <br><b class="text-base-content">c)</b> <span id="question-${i}-answer-c">${q.answers[2]}</span>
+                <br><b class="text-base-content">d)</b> <span id="question-${i}-answer-d">${q.answers[3]}</span>
                 </div>
                 ` : `
                 <br><br>
