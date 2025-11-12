@@ -165,6 +165,11 @@ function generateAlternativesForPythagoreanIdentityQ(value) {
         return n;
     })());
     
+    alternatives[0] = Math.round(alternatives[0] * 100)/100;
+    alternatives[1] = Math.round(alternatives[1] * 100)/100;
+    alternatives[2] = Math.round(alternatives[2] * 100)/100;
+    alternatives[3] = Math.round(alternatives[3] * 100)/100;
+
     return fisherYates(alternatives);
 }
 
@@ -270,13 +275,16 @@ export function buildQuestions(questionsData) {
                 preparedQuestion = generators.generatePythagoreanIdentityQ();
                 newQuestion.theme = "Relação Fundamental da Trigonometria";
                 if (preparedQuestion.answer.cos) {
-                    newQuestion.context = `Calcule o valor do cosseno de um ângulo α sendo o seno do mesmo é ${preparedQuestion.values.sin}:`;
+                    newQuestion.context = `Calcule o valor do cosseno de um ângulo α sendo o seno do mesmo é ${Math.round((preparedQuestion.values.sin) * 100)/100}:`;
+                    if (newQuestion.hasAlternatives) {
+                        newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(preparedQuestion.answer.cos);
+                    }
                 }
                 if (preparedQuestion.answer.sin) {
-                    newQuestion.context = `Calcule o valor do seno de um ângulo α sendo o cosseno do mesmo é ${preparedQuestion.values.cos}:`;
-                }
-                if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(preparedQuestion.answer.firstDet)
+                    newQuestion.context = `Calcule o valor do seno de um ângulo α sendo o cosseno do mesmo é ${Math.round((preparedQuestion.values.cos) * 100)/100}:`;
+                    if (newQuestion.hasAlternatives) {
+                        newQuestion.answers = generateAlternativesForPythagoreanIdentityQ(preparedQuestion.answer.sin);
+                    }
                 }
                 break;
         }
