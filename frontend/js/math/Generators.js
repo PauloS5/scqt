@@ -111,7 +111,7 @@ export function generateFirstDetQ() {
     const firstDet = Math.floor(Math.random() * 360);
 
     return {
-        values: { totalDegrees: turnsCount + firstDet },
+        values: { totalDegrees: (turnsCount * 360) + firstDet },
         answer: { firstDet: firstDet }
     };
 }

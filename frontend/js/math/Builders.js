@@ -2,7 +2,7 @@
 
 function fisherYates(arr) {
     for (let i = arr.length-1; i > 0; i--) {
-        const j = Math.floor(Math.random * (i+1));
+        const j = Math.floor(Math.random() * (i+1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 
@@ -12,9 +12,9 @@ function fisherYates(arr) {
 function generateAlternativesForFirstDetQ(value) {
     let alternatives = [];
     alternatives.push(value);
-    alternatives.push(value * 0.5);
-    alternatives.push(value * 1.5);
-    alternatives.push(value * 2);
+    alternatives.push(Math.round(value * 0.1));
+    alternatives.push(value - (10 * (Math.floor(Math.random() * 2) + 1)));
+    alternatives.push(value + (10 * (Math.floor(Math.random() * 4) + 1)));
     
     return fisherYates(alternatives);
 }
