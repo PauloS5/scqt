@@ -184,7 +184,7 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Teorema de Pitágoras";
 
                 if (preparedQuestion.answer.hip){
-                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${preparedQuestion.values.catA} e outro que mede ${preparedQuestion.values.catA}, determine a hipotenusa:`;
+                    newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${preparedQuestion.values.catA} e outro que mede ${preparedQuestion.values.catB}, determine a hipotenusa:`;
                 }
                 if (preparedQuestion.answer.catA){
                     newQuestion.context = `Dado um triângulo retângulo com um cateto que mede ${preparedQuestion.values.catB} e hipotenusa medindo ${preparedQuestion.values.hip}, determine o valor do outro cateto:`;
