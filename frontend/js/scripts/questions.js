@@ -16,9 +16,6 @@ function getQuestionsConfig() {
         let qTheme = themeSelect.options[themeSelect.selectedIndex].value;
         let qStyle = styleSelect.options[styleSelect.selectedIndex].value;
 
-        console.log(qTheme)
-        console.log(qStyle)
-
         if (!["firstDet", "pythagoras", "sin", "cos", "tan", "radToDeg", "degToRad", "pythagoreanIdentity"].includes(qTheme)) {
             i++;
             continue;
@@ -38,6 +35,40 @@ function getQuestionsConfig() {
     }
 
     return questionsConfigList;
+}
+
+// Função para extrair dados dos questões geradas
+function getQuestions() {
+    let list = [];
+    let el;
+    let i = 1;
+    while (true) {
+        el = document.getElementById(`question-${i}`);
+        if (el === null) {
+            break;
+        }
+
+        const theme = document.getElementById(`question-${i}-theme`).textContent;
+        const context = document.getElementById(`question-${i}-context`).textContent;
+        const alternatives = document.getElementById(`question-${i}-alternatives`);
+
+        let data = {
+            theme: theme,
+            context: context,
+            hasAlternatives: Boolean(alternatives),
+            answers: !Boolean(alternatives) ? [] : [
+                document.getElementById(`question-${i}-answer-a`).textContent,
+                document.getElementById(`question-${i}-answer-b`).textContent,
+                document.getElementById(`question-${i}-answer-c`).textContent,
+                document.getElementById(`question-${i}-answer-d`).textContent
+            ]
+        };
+
+        list.push(data);
+        i++;
+    }
+
+    return list;
 }
 
 // Função para gerar as opções de questão
@@ -87,15 +118,18 @@ function renderQuestions(questions, container_id) {
 
         let newQuestion = document.createElement("div");
         newQuestion.className = "bg-base-100 rounded-lg p-6 mb-4 shadow-md";
+        newQuestion.id = `question-${i}`
         newQuestion.innerHTML = `
-            <h3 class="font-bold text-base-content text-lg mb-3">Questão ${q.number} - ${q.theme}</h3>
-            <p class="text-base-content font-semibold">
-                ${q.context}
+            <h3 class="font-bold text-base-content text-lg mb-3" id="question-${i}-theme">Questão ${i} - ${q.theme}</h3>
+            <p class="text-base-content font-semibold"">
+                <span id="question-${i}-context">${q.context}</span>
                 ${q.hasAlternatives ? `
-                <br><br><b class="text-base-content">a)</b> ${q.answers[0]}
-                <br><b class="text-base-content">b)</b> ${q.answers[1]}
-                <br><b class="text-base-content">c)</b> ${q.answers[2]}
-                <br><b class="text-base-content">d)</b> ${q.answers[3]}
+                <div id="question-${i}-alternatives">
+                <br><b class="text-base-content">a)</b> <span id="question-${i}-answer-a">${q.answers[0]}</span>
+                <br><b class="text-base-content">b)</b> <span id="question-${i}-answer-b">${q.answers[1]}</span>
+                <br><b class="text-base-content">c)</b> <span id="question-${i}-answer-c">${q.answers[2]}</span>
+                <br><b class="text-base-content">d)</b> <span id="question-${i}-answer-d">${q.answers[3]}</span>
+                </div>
                 ` : `
                 <br><br>
                 <div class='mt-3 p-3 bg-base-200 rounded text-base-content italic'>
@@ -114,122 +148,35 @@ document.getElementById("btn-renderOptions").addEventListener("click", function 
     renderOptions(document.getElementById('in-count').value);
 });
 document.getElementById("btn-renderQuestions").addEventListener("click", function () {
-    let fakeQuestions = [
-        {
-            number: 1,
-            theme: "Trigonometria",
-            context: "Qual é o seno de 30°?",
-            hasAlternatives: true,
-            answers: [
-                "1",
-                "0.5",
-                "0",
-                "0.866"
-            ]
-        },
-        {
-            number: 2,
-            theme: "Trigonometria",
-            context: "Em um triângulo retângulo com catetos medindo 6 cm e 8 cm, qual é o valor da hipotenusa?",
-            hasAlternatives: false
-        },
-        {
-            number: 3,
-            theme: "Trigonometria",
-            context: "O cosseno de 60° é igual a:",
-            hasAlternatives: true,
-            answers: [
-                "0.5",
-                "0.866",
-                "1",
-                "0"
-            ]
-        },
-        {
-            number: 4,
-            theme: "Trigonometria",
-            context: "Em trigonometria, o seno é definido como:",
-            hasAlternatives: true,
-            answers: [
-                "Cateto oposto / Cateto adjacente",
-                "Hipotenusa / Cateto oposto",
-                "Cateto oposto / Hipotenusa",
-                "Hipotenusa / Cateto adjacente"
-            ]
-        },
-        {
-            number: 5,
-            theme: "Trigonometria",
-            context: "Qual é o ângulo cujo seno é 1?",
-            hasAlternatives: true,
-            answers: [
-                "30°",
-                "45°",
-                "60°",
-                "90°"
-            ]
-        },
-        {
-            number: 6,
-            theme: "Trigonometria",
-            context: "Qual das relações trigonométricas está correta?",
-            hasAlternatives: true,
-            answers: [
-                "sen²(θ) + cos²(θ) = 2",
-                "sen²(θ) + cos²(θ) = 1",
-                "sen²(θ) - cos²(θ) = 1",
-                "sen(θ) * cos²(θ) = 1"
-            ]
-        },
-        {
-            number: 7,
-            theme: "Trigonometria",
-            context: "A tangente é definida como:",
-            hasAlternatives: true,
-            answers: [
-                "Hipotenusa / Cateto oposto",
-                "Cateto adjacente / Hipotenusa",
-                "Cateto oposto / Cateto adjacente",
-                "Hipotenusa / Cateto adjacente"
-            ]
-        },
-        {
-            number: 8,
-            theme: "Trigonometria",
-            context: "Se o cateto oposto mede 4 cm e a hipotenusa mede 5 cm, qual é o valor aproximado do seno?",
-            hasAlternatives: false
-        },
-        {
-            number: 9,
-            theme: "Trigonometria",
-            context: "Qual é o valor da tangente de 45°?",
-            hasAlternatives: true,
-            answers: [
-                "0",
-                "0.5",
-                "1",
-                "√3"
-            ]
-        },
-        {
-            number: 10,
-            theme: "Trigonometria",
-            context: "Em um triângulo retângulo, qual razão trigonométrica relaciona o cateto adjacente com a hipotenusa?",
-            hasAlternatives: true,
-            answers: [
-                "Seno",
-                "Cosseno",
-                "Tangente",
-                "Secante"
-            ]
-        }
-    ];
-
     let questionsConfigList = getQuestionsConfig();
     let questions = buildQuestions(questionsConfigList);
 
-    renderQuestions(fakeQuestions, "questions-list");
+    renderQuestions(questions, "questions-list");
     document.getElementById("mdl_questionsList").showModal();
+});
+document.getElementById("btn-print").addEventListener("click", function () {
+    const questions = getQuestions();
+
+    fetch("http://localhost/api-pdf/main.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(questions)
+    })
+    .then(response => {
+        if (!response.ok) {
+          throw new Error("Erro ao gerar o PDF");
+        }
+        return response.blob();
+    })
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        window.open(url, "_blank");
+    })
+    .catch(err => {
+        alert("Erro: " + err.message);
+    });
 });
 document.getElementById("btn-closeModal").addEventListener("click", function () {
     document.getElementById('mdl_questionsList').close();
