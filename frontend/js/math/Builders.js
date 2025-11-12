@@ -142,7 +142,7 @@ function generateAlternativesForDegToRadQ(coefficient, divider) {
         } while (value <= 0);
         return value;
     })()});
-    
+
     return fisherYates(alternatives);
 }
 
@@ -249,7 +249,7 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Conversão: Radianos para Graus";
                 newQuestion.context = `Converta ${preparedQuestion.values.coefficient}π/${preparedQuestion.values.divider} rad em graus:`;
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForRadToDegQ(preparedQuestion.answer.firstDet)
+                    newQuestion.answers = generateAlternativesForRadToDegQ(preparedQuestion.answer.degrees)
                     newQuestion.answers = newQuestion.answers.map(value => {
                         return value + " °";
                     });
@@ -260,9 +260,9 @@ export function buildQuestions(questionsData) {
                 newQuestion.theme = "Conversão: Graus para Radianos";
                 newQuestion.context = `Converta ${preparedQuestion.values.degrees} graus em radianos:`;
                 if (newQuestion.hasAlternatives) {
-                    newQuestion.answers = generateAlternativesForDegToRadQ(preparedQuestion.answer.firstDet)
+                    newQuestion.answers = generateAlternativesForDegToRadQ(preparedQuestion.answer.coefficient, preparedQuestion.answer.divider)
                     newQuestion.answers = newQuestion.answers.map(value => {
-                        return value + " rad";
+                        return value.coefficient + "π/" + value.divider + " rad";
                     });
                 }
                 break;
