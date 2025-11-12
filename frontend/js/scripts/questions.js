@@ -157,7 +157,7 @@ document.getElementById("btn-renderQuestions").addEventListener("click", functio
 document.getElementById("btn-print").addEventListener("click", function () {
     const questions = getQuestions();
 
-    fetch("http://localhost/api-pdf/main.php", {   // altere para sua API
+    fetch("http://localhost/api-pdf/main.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -171,7 +171,6 @@ document.getElementById("btn-print").addEventListener("click", function () {
         return response.blob();
     })
     .then(blob => {
-        // abre o PDF no navegador
         const url = window.URL.createObjectURL(blob);
         window.open(url, "_blank");
     })
