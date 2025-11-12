@@ -47,7 +47,6 @@ function getQuestions() {
         if (el === null) {
             break;
         }
-        console.log("test")
 
         const theme = document.getElementById(`question-${i}-theme`).textContent;
         const context = document.getElementById(`question-${i}-context`).textContent;
@@ -156,27 +155,28 @@ document.getElementById("btn-renderQuestions").addEventListener("click", functio
     document.getElementById("mdl_questionsList").showModal();
 });
 document.getElementById("btn-print").addEventListener("click", function () {
-    const data = getQuestions();
+    const questions = getQuestions();
 
-    fetch("http:127.0.0.1/api-pdf/main.php", {
+    fetch("http://localhost/api-pdf/main.php", {   // altere para sua API
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(questions)
     })
     .then(response => {
         if (!response.ok) {
           throw new Error("Erro ao gerar o PDF");
         }
-        return response.blob;
+        return response.blob();
     })
     .then(blob => {
+        // abre o PDF no navegador
         const url = window.URL.createObjectURL(blob);
         window.open(url, "_blank");
     })
     .catch(err => {
-        console.error("Erro: " + err.message);
+        alert("Erro: " + err.message);
     });
 });
 document.getElementById("btn-closeModal").addEventListener("click", function () {
