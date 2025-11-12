@@ -85,7 +85,7 @@ function renderQuestions(questions, container_id) {
         let newQuestion = document.createElement("div");
         newQuestion.className = "bg-base-100 rounded-lg p-6 mb-4 shadow-md";
         newQuestion.innerHTML = `
-            <h3 class="font-bold text-base-content text-lg mb-3">Questão ${q.number} - ${q.theme}</h3>
+            <h3 class="font-bold text-base-content text-lg mb-3">Questão ${i} - ${q.theme}</h3>
             <p class="text-base-content font-semibold">
                 ${q.context}
                 ${q.hasAlternatives ? `
@@ -111,122 +111,10 @@ document.getElementById("btn-renderOptions").addEventListener("click", function 
     renderOptions(document.getElementById('in-count').value);
 });
 document.getElementById("btn-renderQuestions").addEventListener("click", function () {
-    let fakeQuestions = [
-        {
-            number: 1,
-            theme: "Trigonometria",
-            context: "Qual é o seno de 30°?",
-            hasAlternatives: true,
-            answers: [
-                "1",
-                "0.5",
-                "0",
-                "0.866"
-            ]
-        },
-        {
-            number: 2,
-            theme: "Trigonometria",
-            context: "Em um triângulo retângulo com catetos medindo 6 cm e 8 cm, qual é o valor da hipotenusa?",
-            hasAlternatives: false
-        },
-        {
-            number: 3,
-            theme: "Trigonometria",
-            context: "O cosseno de 60° é igual a:",
-            hasAlternatives: true,
-            answers: [
-                "0.5",
-                "0.866",
-                "1",
-                "0"
-            ]
-        },
-        {
-            number: 4,
-            theme: "Trigonometria",
-            context: "Em trigonometria, o seno é definido como:",
-            hasAlternatives: true,
-            answers: [
-                "Cateto oposto / Cateto adjacente",
-                "Hipotenusa / Cateto oposto",
-                "Cateto oposto / Hipotenusa",
-                "Hipotenusa / Cateto adjacente"
-            ]
-        },
-        {
-            number: 5,
-            theme: "Trigonometria",
-            context: "Qual é o ângulo cujo seno é 1?",
-            hasAlternatives: true,
-            answers: [
-                "30°",
-                "45°",
-                "60°",
-                "90°"
-            ]
-        },
-        {
-            number: 6,
-            theme: "Trigonometria",
-            context: "Qual das relações trigonométricas está correta?",
-            hasAlternatives: true,
-            answers: [
-                "sen²(θ) + cos²(θ) = 2",
-                "sen²(θ) + cos²(θ) = 1",
-                "sen²(θ) - cos²(θ) = 1",
-                "sen(θ) * cos²(θ) = 1"
-            ]
-        },
-        {
-            number: 7,
-            theme: "Trigonometria",
-            context: "A tangente é definida como:",
-            hasAlternatives: true,
-            answers: [
-                "Hipotenusa / Cateto oposto",
-                "Cateto adjacente / Hipotenusa",
-                "Cateto oposto / Cateto adjacente",
-                "Hipotenusa / Cateto adjacente"
-            ]
-        },
-        {
-            number: 8,
-            theme: "Trigonometria",
-            context: "Se o cateto oposto mede 4 cm e a hipotenusa mede 5 cm, qual é o valor aproximado do seno?",
-            hasAlternatives: false
-        },
-        {
-            number: 9,
-            theme: "Trigonometria",
-            context: "Qual é o valor da tangente de 45°?",
-            hasAlternatives: true,
-            answers: [
-                "0",
-                "0.5",
-                "1",
-                "√3"
-            ]
-        },
-        {
-            number: 10,
-            theme: "Trigonometria",
-            context: "Em um triângulo retângulo, qual razão trigonométrica relaciona o cateto adjacente com a hipotenusa?",
-            hasAlternatives: true,
-            answers: [
-                "Seno",
-                "Cosseno",
-                "Tangente",
-                "Secante"
-            ]
-        }
-    ];
-
     let questionsConfigList = getQuestionsConfig();
     let questions = buildQuestions(questionsConfigList);
-    console.log(questions);
 
-    renderQuestions(fakeQuestions, "questions-list");
+    renderQuestions(questions, "questions-list");
     document.getElementById("mdl_questionsList").showModal();
 });
 document.getElementById("btn-closeModal").addEventListener("click", function () {
