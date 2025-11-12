@@ -12,7 +12,7 @@ function fisherYates(arr) {
 function generateAlternativesForFirstDetQ(value) {
     let alternatives = [];
     alternatives.push(value);
-    alternatives.push(Math.round(value * 0.1));
+    alternatives.push(Math.round(value * 2));
     alternatives.push(value - (10 * (Math.floor(Math.random() * 2) + 1)));
     alternatives.push(value + (10 * (Math.floor(Math.random() * 4) + 1)));
     
