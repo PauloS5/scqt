@@ -156,7 +156,28 @@ document.getElementById("btn-renderQuestions").addEventListener("click", functio
     document.getElementById("mdl_questionsList").showModal();
 });
 document.getElementById("btn-print").addEventListener("click", function () {
-    console.log(getQuestions());
+    const data = getQuestions();
+
+    fetch("http:127.0.0.1/api-pdf/main.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+          throw new Error("Erro ao gerar o PDF");
+        }
+        return response.blob;
+    })
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        window.open(url, "_blank");
+    })
+    .catch(err => {
+        console.error("Erro: " + err.message);
+    });
 });
 document.getElementById("btn-closeModal").addEventListener("click", function () {
     document.getElementById('mdl_questionsList').close();
