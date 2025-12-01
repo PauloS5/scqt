@@ -1,5 +1,9 @@
-﻿// Ângulos notáveis de 1 à 89
-const notableAngles = [
+﻿/*
+    FUNÇÕES RESPONSÁVEIS POR GERAR AS QUESTÕES
+*/
+
+// Ângulos principais (1 à 89)
+const mainAngles = [
     {sin: 0.0175, cos: 0.9998, tan: 0.0175},
     {sin: 0.0349, cos: 0.9994, tan: 0.0349},
     {sin: 0.0523, cos: 0.9986, tan: 0.0524},
@@ -141,8 +145,8 @@ export function generatePythagoreanTheoremQ() {
         answer: { hip: values.hip } },
         { values: { catA: values.catA, hip: values.hip },
         answer: { catB: values.catB } },
-        { values: { catB: values.catB, hip: values.hip },
-        answer: { catA: values.catA } }
+        { values: { catA: values.catB, hip: values.hip },
+        answer: { catAB: values.catA } }
     ][index];
 }
 
@@ -218,7 +222,7 @@ export function generateDegToRadQ() {
 
 // Função para gerar uma questão sobre a Relação Geral da Trigonometria
 export function generatePythagoreanIdentityQ() {
-    let values = notableAngles[Math.floor(Math.random() * notableAngles.length)];
+    let values = mainAngles[Math.floor(Math.random() * mainAngles.length)];
 
     const index = Number(Math.random() >= 0.5);
 
